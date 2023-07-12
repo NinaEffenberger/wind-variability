@@ -41,6 +41,9 @@ average_daily = compute_average_windspeeds(
 )
 data = drop_nans(data, average_daily)
 
+data.to_pickle("data/Kelmarsh_pickle/data.pkl")
+
+print("done")
 # recompute and exclude nans
 (
     average_daily,
@@ -48,6 +51,8 @@ data = drop_nans(data, average_daily)
     average_10min,
     average_monthly,
 ) = compute_average_windspeeds(data, windspeeds="Wind speed (m/s)")
+
+average_10min.to_pickle("data/Kelmarsh_pickle/data_10min.pkl")
 
 average_three_hourly = []
 for i in range(len(average_daily)):
