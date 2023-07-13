@@ -141,7 +141,6 @@ np.save("data/weibull_params/3_param_instantaneous/locs_boltenhagen.npy", locs)
 
 
 # load data
-# load data
 average_10min = np.load("data/Pickles/Fichtelberg/average_10min.npy")
 day = np.load("data/Pickles/Fichtelberg/day.npy")
 six_hour = np.load("data/Pickles/Fichtelberg/six_hour.npy")

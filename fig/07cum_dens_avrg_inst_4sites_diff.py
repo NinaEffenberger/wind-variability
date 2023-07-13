@@ -1,14 +1,7 @@
-import glob
-import os
-
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import seaborn as sns
-import xarray as xr
-from distributions import compute_instantenous_windspeeds
-from windspeed_averages_wp import compute_average_windspeeds, drop_nans, load_data, set_date
 
 matplotlib.rcParams.update({"font.size": 12})
 

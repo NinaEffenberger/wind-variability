@@ -1,7 +1,5 @@
-from setuptools import setup, find_packages
+from setuptools import find_packages, setup
 
 setup(
-    packages=find_packages(
-        include=["windspeed-variability", "windspeed-variability.*"]
-    ),
+    packages=find_packages(include=["wind-variability", "wind-variability.*"]),
 )

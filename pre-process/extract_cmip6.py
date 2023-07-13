@@ -1,10 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
-import pandas as pd
 import xarray as xr
-from distributions import plot_param_trend_both_CMIP6, weibull_paramsdef_cmip6
-from scipy import stats
-from scipy.stats import kstest, weibull_min
 
 plt.rcParams["axes.prop_cycle"] = plt.cycler(
     color=["#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7"]
