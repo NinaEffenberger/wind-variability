@@ -1,20 +1,14 @@
 import glob
 import os
 
+import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
 import xarray as xr
 from distributions import compute_instantenous_windspeeds
-
-from windspeed_averages_wp import (
-    compute_average_windspeeds,
-    drop_nans,
-    load_data,
-    set_date,
-)
-import matplotlib
+from windspeed_averages_wp import compute_average_windspeeds, drop_nans, load_data, set_date
 
 matplotlib.rcParams.update({"font.size": 12})
 
@@ -22,70 +16,34 @@ savepath = "plots_eps/cum_dens_avrg_inst_4sites_diff.eps"
 plt.rcParams["axes.prop_cycle"] = plt.cycler(
     color=["#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7"]
 )
-fig, ax = plt.subplots(
-    4, 2, sharex=True, sharey=True, figsize=(6, 6), layout="constrained"
-)
+fig, ax = plt.subplots(4, 2, sharex=True, sharey=True, figsize=(6, 6), layout="constrained")
 
 # load data
-paths = [
-    "data/Kelmarsh/Turbine_Data_Kelmarsh_1_2016-01-03_-_2017-01-01_228.csv",
-    "data/Kelmarsh/Turbine_Data_Kelmarsh_1_2017-01-01_-_2018-01-01_228.csv",
-    "data/Kelmarsh/Turbine_Data_Kelmarsh_1_2018-01-01_-_2019-01-01_228.csv",
-    "data/Kelmarsh/Turbine_Data_Kelmarsh_1_2019-01-01_-_2020-01-01_228.csv",
-    "data/Kelmarsh/Turbine_Data_Kelmarsh_1_2020-01-01_-_2021-01-01_228.csv",
-]
-data = load_data(paths)
-set_date(data, current_name="Date and time")
-average_daily = compute_average_windspeeds(
-    data, windspeeds="Wind speed (m/s)", only_daily=True
-)
-data = drop_nans(data, average_daily)
+average_daily = np.load("data/Pickles/Kelmarsh/average_daily.npy")
+average_hourly = np.load("data/Pickles/Kelmarsh/average_hourly.npy")
+average_10min = np.load("data/Pickles/Kelmarsh/average_10min.npy")
+average_monthly = np.load("data/Pickles/Kelmarsh/average_monthly.npy")
+day = np.load("data/Pickles/Kelmarsh/day.npy")
+six_hour = np.load("data/Pickles/Kelmarsh/six_hour.npy")
+three_hour = np.load("data/Pickles/Kelmarsh/three_hour.npy")
+hour = np.load("data/Pickles/Kelmarsh/hour.npy")
 
-data.to_pickle("data/Kelmarsh_pickle/data.pkl")
+average_three_hourly = np.average(average_hourly.reshape(-1, 3), axis=1)
+average_six_hourly = np.average(average_hourly.reshape(-1, 6), axis=1)
 
-print("done")
-# recompute and exclude nans
-(
-    average_daily,
-    average_hourly,
-    average_10min,
-    average_monthly,
-) = compute_average_windspeeds(data, windspeeds="Wind speed (m/s)")
-
-average_10min.to_pickle("data/Kelmarsh_pickle/data_10min.pkl")
-
-average_three_hourly = []
-for i in range(len(average_daily)):
-    day = average_daily.index.get_level_values(0)[i]
-    three_hourly_average = np.average(
-        average_hourly.loc[day].to_numpy().reshape(-1, 3), axis=1
-    )
-    average_three_hourly.append(three_hourly_average)
-average_six_hourly = []
-for i in range(len(average_daily)):
-    day = average_daily.index.get_level_values(0)[i]
-    six_hourly_average = np.average(
-        average_hourly.loc[day].to_numpy().reshape(-1, 6), axis=1
-    )
-    average_six_hourly.append(six_hourly_average)
-
-average_three_hourly = pd.DataFrame(np.array(average_three_hourly).flatten())
-average_six_hourly = pd.DataFrame(np.array(average_six_hourly).flatten())
 data = [
-    average_daily,
-    average_six_hourly.squeeze(),
-    average_three_hourly.squeeze(),
-    average_hourly,
-    average_10min,
+    pd.Series(average_daily),
+    pd.Series(average_six_hourly),
+    pd.Series(average_three_hourly),
+    pd.Series(average_hourly),
+    pd.Series(average_10min),
 ]
 labels = ["day", "6h", "3h", "hourly", "10min"]
 dist1, dist2, dist3, dist4, dist5 = data
 label1, label2, label3, label4, label5 = labels
 data = pd.DataFrame()
 data["windspeeds"] = np.sort(
-    np.concatenate(
-        (dist1.unique(), dist2.unique(), dist3.unique(), dist4.unique(), dist5.unique())
-    )
+    np.concatenate((dist1.unique(), dist2.unique(), dist3.unique(), dist4.unique(), dist5.unique()))
 )
 dist1 = dist1.values
 dist2 = dist2.values
@@ -108,60 +66,30 @@ ax[0, 0].plot("windspeeds", "dist7", data=data, linewidth=1, label=label2)
 ax[0, 0].plot("windspeeds", "dist8", data=data, linewidth=1, label=label3)
 ax[0, 0].legend()
 # load data
-paths = [
-    "data/Penmanshiel/Turbine_Data_Penmanshiel_11_2016-07-19_-_2017-01-01_1051.csv",
-    "data/Penmanshiel/Turbine_Data_Penmanshiel_11_2017-01-01_-_2018-01-01_1051.csv",
-    "data/Penmanshiel/Turbine_Data_Penmanshiel_11_2018-01-01_-_2019-01-01_1051.csv",
-    "data/Penmanshiel/Turbine_Data_Penmanshiel_11_2019-01-01_-_2020-01-01_1051.csv",
-    "data/Penmanshiel/Turbine_Data_Penmanshiel_11_2020-01-01_-_2021-01-01_1051.csv",
-]
-data = load_data(paths)
-set_date(data, current_name="Date and time")
-average_daily = compute_average_windspeeds(
-    data, windspeeds="Wind speed (m/s)", only_daily=True
-)
-data = drop_nans(data, average_daily)
+average_daily = np.load("data/Pickles/Penmanshiel/average_daily.npy")
+average_hourly = np.load("data/Pickles/Penmanshiel/average_hourly.npy")
+average_10min = np.load("data/Pickles/Penmanshiel/average_10min.npy")
+average_monthly = np.load("data/Pickles/Penmanshiel/average_monthly.npy")
+day = np.load("data/Pickles/Penmanshiel/day.npy")
+six_hour = np.load("data/Pickles/Penmanshiel/six_hour.npy")
+three_hour = np.load("data/Pickles/Penmanshiel/three_hour.npy")
+hour = np.load("data/Pickles/Penmanshiel/hour.npy")
+average_three_hourly = np.average(average_hourly.reshape(-1, 3), axis=1)
+average_six_hourly = np.average(average_hourly.reshape(-1, 6), axis=1)
 
-# recompute and exclude nans
-(
-    average_daily,
-    average_hourly,
-    average_10min,
-    average_monthly,
-) = compute_average_windspeeds(data, windspeeds="Wind speed (m/s)")
-average_three_hourly = []
-for i in range(len(average_daily)):
-    day = average_daily.index.get_level_values(0)[i]
-    three_hourly_average = np.average(
-        average_hourly.loc[day].to_numpy().reshape(-1, 3), axis=1
-    )
-    average_three_hourly.append(three_hourly_average)
-
-average_six_hourly = []
-for i in range(len(average_daily)):
-    day = average_daily.index.get_level_values(0)[i]
-    six_hourly_average = np.average(
-        average_hourly.loc[day].to_numpy().reshape(-1, 6), axis=1
-    )
-    average_six_hourly.append(six_hourly_average)
-
-average_three_hourly = pd.DataFrame(np.array(average_three_hourly).flatten())
-average_six_hourly = pd.DataFrame(np.array(average_six_hourly).flatten())
 data = [
-    average_daily,
-    average_six_hourly.squeeze(),
-    average_three_hourly.squeeze(),
-    average_hourly,
-    average_10min,
+    pd.Series(average_daily),
+    pd.Series(average_six_hourly),
+    pd.Series(average_three_hourly),
+    pd.Series(average_hourly),
+    pd.Series(average_10min),
 ]
 labels = ["daily", "six hourly", "three hourly", "hourly", "10min"]
 dist1, dist2, dist3, dist4, dist5 = data
 label1, label2, label3, label4, label5 = labels
 data = pd.DataFrame()
 data["windspeeds"] = np.sort(
-    np.concatenate(
-        (dist1.unique(), dist2.unique(), dist3.unique(), dist4.unique(), dist5.unique())
-    )
+    np.concatenate((dist1.unique(), dist2.unique(), dist3.unique(), dist4.unique(), dist5.unique()))
 )
 dist1 = dist1.values
 dist2 = dist2.values
@@ -182,77 +110,28 @@ ax[1, 0].plot("windspeeds", "dist7", data=data, linewidth=1, label=label3)
 # ax[1, 0].plot("windspeeds", "dist4", data=data,  linewidth=1, label=label4)
 ax[1, 0].plot("windspeeds", "dist8", data=data, linewidth=1, label=label5)
 
-
 # load data
-path = "data/tall_tower/nwtc_m5/huragl87S1/windagl87S1"
-files = glob.glob(os.path.join(path, "*.nc"))
-
-data = None
-for f in files:
-    # initialize dataframe
-    if not isinstance(data, pd.DataFrame):
-        ds = xr.open_dataset(f)
-        data = ds.to_dataframe()
-        data["date"] = data.index.get_level_values(0)
-        data.set_index(["date"])
-        average_daily = compute_average_windspeeds(
-            data, windspeeds="windagl87S1", only_daily=True
-        )
-        data = drop_nans(data, average_daily)
-    else:
-        ds = xr.open_dataset(f)
-        filedata = ds.to_dataframe()
-        filedata["date"] = filedata.index.get_level_values(0)
-        filedata.set_index(["date"])
-        average_daily = compute_average_windspeeds(
-            filedata, windspeeds="windagl87S1", only_daily=True
-        )
-        filedata = drop_nans(filedata, average_daily)
-        data = pd.concat([data, filedata])
-
-
-# recompute and exclude nans
-(
-    average_daily,
-    average_hourly,
-    average_10min,
-    average_monthly,
-) = compute_average_windspeeds(data, windspeeds="windagl87S1")
-
-
-average_three_hourly = []
-for i in range(len(average_daily)):
-    day = average_daily.index.get_level_values(0)[i]
-    three_hourly_average = np.average(
-        average_hourly.loc[day].to_numpy().reshape(-1, 3), axis=1
-    )
-    average_three_hourly.append(three_hourly_average)
-
-average_six_hourly = []
-for i in range(len(average_daily)):
-    day = average_daily.index.get_level_values(0)[i]
-    six_hourly_average = np.average(
-        average_hourly.loc[day].to_numpy().reshape(-1, 6), axis=1
-    )
-    average_six_hourly.append(six_hourly_average)
-
-average_three_hourly = pd.DataFrame(np.array(average_three_hourly).flatten())
-average_six_hourly = pd.DataFrame(np.array(average_six_hourly).flatten())
+average_daily = np.load("data/Pickles/NWTC/average_daily.npy")
+average_hourly = np.load("data/Pickles/NWTC/average_hourly.npy")
+average_10min = np.load("data/Pickles/NWTC/average_10min.npy")
+average_monthly = np.load("data/Pickles/NWTC/average_monthly.npy")
+day = np.load("data/Pickles/NWTC/day.npy")
+six_hour = np.load("data/Pickles/NWTC/six_hour.npy")
+three_hour = np.load("data/Pickles/NWTC/three_hour.npy")
+hour = np.load("data/Pickles/NWTC/hour.npy")
 data = [
-    average_daily,
-    average_six_hourly.squeeze(),
-    average_three_hourly.squeeze(),
-    average_hourly,
-    average_10min,
+    pd.Series(average_daily),
+    pd.Series(average_six_hourly),
+    pd.Series(average_three_hourly),
+    pd.Series(average_hourly),
+    pd.Series(average_10min),
 ]
 labels = ["daily", "six hourly", "three hourly", "hourly", "10min"]
 dist1, dist2, dist3, dist4, dist5 = data
 label1, label2, label3, label4, label5 = labels
 data = pd.DataFrame()
 data["windspeeds"] = np.sort(
-    np.concatenate(
-        (dist1.unique(), dist2.unique(), dist3.unique(), dist4.unique(), dist5.unique())
-    )
+    np.concatenate((dist1.unique(), dist2.unique(), dist3.unique(), dist4.unique(), dist5.unique()))
 )
 dist1 = dist1.values
 dist2 = dist2.values
@@ -275,75 +154,29 @@ ax[2, 0].plot("windspeeds", "dist8", data=data, linewidth=1, label=label5)
 
 
 # load data
-path = "data/tall_tower/oweg/windagl116S1"
-files = glob.glob(os.path.join(path, "*.nc"))
+average_daily = np.load("data/Pickles/Owez/average_daily.npy")
+average_hourly = np.load("data/Pickles/Owez/average_hourly.npy")
+average_10min = np.load("data/Pickles/Owez/average_10min.npy")
+average_monthly = np.load("data/Pickles/Owez/average_monthly.npy")
+day = np.load("data/Pickles/Owez/day.npy")
+six_hour = np.load("data/Pickles/Owez/six_hour.npy")
+three_hour = np.load("data/Pickles/Owez/three_hour.npy")
+hour = np.load("data/Pickles/Owez/hour.npy")
+days = np.load("data/power-gen/Owez/days.npy", allow_pickle=True)
 
-data = None
-for f in files:
-    # initialize dataframe
-    if not isinstance(data, pd.DataFrame):
-        ds = xr.open_dataset(f)
-        data = ds.to_dataframe()
-        data["date"] = data.index.get_level_values(0)
-        data.set_index(["date"])
-        average_daily = compute_average_windspeeds(
-            data, windspeeds="windagl116S1", only_daily=True
-        )
-        data = drop_nans(data, average_daily)
-    else:
-        ds = xr.open_dataset(f)
-        filedata = ds.to_dataframe()
-        filedata["date"] = filedata.index.get_level_values(0)
-        filedata.set_index(["date"])
-        average_daily = compute_average_windspeeds(
-            filedata, windspeeds="windagl116S1", only_daily=True
-        )
-        filedata = drop_nans(filedata, average_daily)
-        data = pd.concat([data, filedata])
-
-
-# recompute and exclude nans
-(
-    average_daily,
-    average_hourly,
-    average_10min,
-    average_monthly,
-) = compute_average_windspeeds(data, windspeeds="windagl116S1")
-
-
-average_three_hourly = []
-for i in range(len(average_daily)):
-    day = average_daily.index.get_level_values(0)[i]
-    three_hourly_average = np.average(
-        average_hourly.loc[day].to_numpy().reshape(-1, 3), axis=1
-    )
-    average_three_hourly.append(three_hourly_average)
-
-average_six_hourly = []
-for i in range(len(average_daily)):
-    day = average_daily.index.get_level_values(0)[i]
-    six_hourly_average = np.average(
-        average_hourly.loc[day].to_numpy().reshape(-1, 6), axis=1
-    )
-    average_six_hourly.append(six_hourly_average)
-
-average_three_hourly = pd.DataFrame(np.array(average_three_hourly).flatten())
-average_six_hourly = pd.DataFrame(np.array(average_six_hourly).flatten())
 data = [
-    average_daily,
-    average_six_hourly.squeeze(),
-    average_three_hourly.squeeze(),
-    average_hourly,
-    average_10min,
+    pd.Series(average_daily),
+    pd.Series(average_six_hourly),
+    pd.Series(average_three_hourly),
+    pd.Series(average_hourly),
+    pd.Series(average_10min),
 ]
 labels = ["daily", "six hourly", "three hourly", "hourly", "10min"]
 dist1, dist2, dist3, dist4, dist5 = data
 label1, label2, label3, label4, label5 = labels
 data = pd.DataFrame()
 data["windspeeds"] = np.sort(
-    np.concatenate(
-        (dist1.unique(), dist2.unique(), dist3.unique(), dist4.unique(), dist5.unique())
-    )
+    np.concatenate((dist1.unique(), dist2.unique(), dist3.unique(), dist4.unique(), dist5.unique()))
 )
 dist1 = dist1.values
 dist2 = dist2.values
@@ -374,9 +207,7 @@ paths = [
 ]
 data = load_data(paths)
 set_date(data, current_name="Date and time")
-average_daily = compute_average_windspeeds(
-    data, windspeeds="Wind speed (m/s)", only_daily=True
-)
+average_daily = compute_average_windspeeds(data, windspeeds="Wind speed (m/s)", only_daily=True)
 data = drop_nans(data, average_daily)
 
 # recompute and exclude nans
@@ -387,9 +218,7 @@ data = drop_nans(data, average_daily)
     average_monthly,
 ) = compute_average_windspeeds(data, windspeeds="Wind speed (m/s)")
 
-day, six_hour, three_hour, hour = compute_instantenous_windspeeds(
-    data, windspeeds="Wind speed (m/s)"
-)
+day, six_hour, three_hour, hour = compute_instantenous_windspeeds(data, windspeeds="Wind speed (m/s)")
 
 labels = ["daily", "six hourly", "three hourly", "hourly", "10min"]
 # plot_cumulative_densities(data, labels, "plots/open-source/Kelmarsh/1/cumulative_densities")
@@ -404,9 +233,7 @@ dist1, dist2, dist3, dist4, dist5 = data
 label1, label2, label3, label4, label5 = labels
 data = pd.DataFrame()
 data["windspeeds"] = np.sort(
-    np.concatenate(
-        (dist1.unique(), dist2.unique(), dist3.unique(), dist4.unique(), dist5.unique())
-    )
+    np.concatenate((dist1.unique(), dist2.unique(), dist3.unique(), dist4.unique(), dist5.unique()))
 )
 dist1 = dist1.values
 dist2 = dist2.values
@@ -437,9 +264,7 @@ paths = [
 ]
 data = load_data(paths)
 set_date(data, current_name="Date and time")
-average_daily = compute_average_windspeeds(
-    data, windspeeds="Wind speed (m/s)", only_daily=True
-)
+average_daily = compute_average_windspeeds(data, windspeeds="Wind speed (m/s)", only_daily=True)
 data = drop_nans(data, average_daily)
 
 # recompute and exclude nans
@@ -449,9 +274,7 @@ data = drop_nans(data, average_daily)
     average_10min,
     average_monthly,
 ) = compute_average_windspeeds(data, windspeeds="Wind speed (m/s)")
-day, six_hour, three_hour, hour = compute_instantenous_windspeeds(
-    data, windspeeds="Wind speed (m/s)"
-)
+day, six_hour, three_hour, hour = compute_instantenous_windspeeds(data, windspeeds="Wind speed (m/s)")
 
 labels = ["daily", "six hourly", "three hourly", "hourly", "10min"]
 # plot_cumulative_densities(data, labels, "plots/open-source/Kelmarsh/1/cumulative_densities")
@@ -466,9 +289,7 @@ dist1, dist2, dist3, dist4, dist5 = data
 label1, label2, label3, label4, label5 = labels
 data = pd.DataFrame()
 data["windspeeds"] = np.sort(
-    np.concatenate(
-        (dist1.unique(), dist2.unique(), dist3.unique(), dist4.unique(), dist5.unique())
-    )
+    np.concatenate((dist1.unique(), dist2.unique(), dist3.unique(), dist4.unique(), dist5.unique()))
 )
 dist1 = dist1.values
 dist2 = dist2.values
@@ -502,18 +323,14 @@ for f in files:
         data = ds.to_dataframe()
         data["date"] = data.index.get_level_values(0)
         data.set_index(["date"])
-        average_daily = compute_average_windspeeds(
-            data, windspeeds="windagl87S1", only_daily=True
-        )
+        average_daily = compute_average_windspeeds(data, windspeeds="windagl87S1", only_daily=True)
         data = drop_nans(data, average_daily)
     else:
         ds = xr.open_dataset(f)
         filedata = ds.to_dataframe()
         filedata["date"] = filedata.index.get_level_values(0)
         filedata.set_index(["date"])
-        average_daily = compute_average_windspeeds(
-            filedata, windspeeds="windagl87S1", only_daily=True
-        )
+        average_daily = compute_average_windspeeds(filedata, windspeeds="windagl87S1", only_daily=True)
         filedata = drop_nans(filedata, average_daily)
         data = pd.concat([data, filedata])
 
@@ -527,9 +344,7 @@ for f in files:
 ) = compute_average_windspeeds(data, windspeeds="windagl87S1")
 
 
-day, six_hour, three_hour, hour = compute_instantenous_windspeeds(
-    data, windspeeds="windagl87S1"
-)
+day, six_hour, three_hour, hour = compute_instantenous_windspeeds(data, windspeeds="windagl87S1")
 
 labels = ["daily", "six hourly", "three hourly", "hourly", "10min"]
 # plot_cumulative_densities(data, labels, "plots/open-source/Kelmarsh/1/cumulative_densities")
@@ -544,9 +359,7 @@ dist1, dist2, dist3, dist4, dist5 = data
 label1, label2, label3, label4, label5 = labels
 data = pd.DataFrame()
 data["windspeeds"] = np.sort(
-    np.concatenate(
-        (dist1.unique(), dist2.unique(), dist3.unique(), dist4.unique(), dist5.unique())
-    )
+    np.concatenate((dist1.unique(), dist2.unique(), dist3.unique(), dist4.unique(), dist5.unique()))
 )
 dist1 = dist1.values
 dist2 = dist2.values
@@ -580,18 +393,14 @@ for f in files:
         data = ds.to_dataframe()
         data["date"] = data.index.get_level_values(0)
         data.set_index(["date"])
-        average_daily = compute_average_windspeeds(
-            data, windspeeds="windagl116S1", only_daily=True
-        )
+        average_daily = compute_average_windspeeds(data, windspeeds="windagl116S1", only_daily=True)
         data = drop_nans(data, average_daily)
     else:
         ds = xr.open_dataset(f)
         filedata = ds.to_dataframe()
         filedata["date"] = filedata.index.get_level_values(0)
         filedata.set_index(["date"])
-        average_daily = compute_average_windspeeds(
-            filedata, windspeeds="windagl116S1", only_daily=True
-        )
+        average_daily = compute_average_windspeeds(filedata, windspeeds="windagl116S1", only_daily=True)
         filedata = drop_nans(filedata, average_daily)
         data = pd.concat([data, filedata])
 
@@ -604,9 +413,7 @@ for f in files:
     average_monthly,
 ) = compute_average_windspeeds(data, windspeeds="windagl116S1")
 
-day, six_hour, three_hour, hour = compute_instantenous_windspeeds(
-    data, windspeeds="windagl116S1"
-)
+day, six_hour, three_hour, hour = compute_instantenous_windspeeds(data, windspeeds="windagl116S1")
 
 labels = ["daily", "six hourly", "three hourly", "hourly", "10min"]
 # plot_cumulative_densities(data, labels, "plots/open-source/Kelmarsh/1/cumulative_densities")
@@ -621,9 +428,7 @@ dist1, dist2, dist3, dist4, dist5 = data
 label1, label2, label3, label4, label5 = labels
 data = pd.DataFrame()
 data["windspeeds"] = np.sort(
-    np.concatenate(
-        (dist1.unique(), dist2.unique(), dist3.unique(), dist4.unique(), dist5.unique())
-    )
+    np.concatenate((dist1.unique(), dist2.unique(), dist3.unique(), dist4.unique(), dist5.unique()))
 )
 dist1 = dist1.values
 dist2 = dist2.values

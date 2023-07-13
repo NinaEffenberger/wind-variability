@@ -36,7 +36,6 @@ data = drop_nans(data, average_daily)
     average_monthly,
 ) = compute_average_windspeeds(data, windspeeds="Wind speed (m/s)")
 
-
 day, six_hour, three_hour, hour = compute_instantenous_windspeeds(data, windspeeds="Wind speed (m/s)")
 np.save("data/Pickles/Kelmarsh/average_daily.npy", average_daily)
 np.save("data/Pickles/Kelmarsh/average_hourly.npy", average_hourly)
@@ -46,6 +45,9 @@ np.save("data/Pickles/Kelmarsh/day.npy", day)
 np.save("data/Pickles/Kelmarsh/six_hour.npy", six_hour)
 np.save("data/Pickles/Kelmarsh/three_hour.npy", three_hour)
 np.save("data/Pickles/Kelmarsh/hour.npy", hour)
+days = average_daily.index.get_level_values(0)
+np.save("data/Pickles/Kelmarsh/days.npy", days)
+
 
 # load data
 paths = [
@@ -77,6 +79,8 @@ np.save("data/Pickles/Penmanshiel/day.npy", day)
 np.save("data/Pickles/Penmanshiel/six_hour.npy", six_hour)
 np.save("data/Pickles/Penmanshiel/three_hour.npy", three_hour)
 np.save("data/Pickles/Penmanshiel/hour.npy", hour)
+days = average_daily.index.get_level_values(0)
+np.save("data/Pickles/Penmanshiel/days.npy", days)
 
 # load data
 path = "data/tall_tower/nwtc_m5/huragl87S1/windagl87S1"
@@ -110,7 +114,7 @@ for f in files:
     average_monthly,
 ) = compute_average_windspeeds(data, windspeeds="windagl87S1")
 
-ay, six_hour, three_hour, hour = compute_instantenous_windspeeds(data, windspeeds="windagl87S1")
+day, six_hour, three_hour, hour = compute_instantenous_windspeeds(data, windspeeds="windagl87S1")
 np.save("data/Pickles/NWTC/average_daily.npy", average_daily)
 np.save("data/Pickles/NWTC/average_hourly.npy", average_hourly)
 np.save("data/Pickles/NWTC/average_10min.npy", average_10min)
@@ -119,6 +123,8 @@ np.save("data/Pickles/NWTC/day.npy", day)
 np.save("data/Pickles/NWTC/six_hour.npy", six_hour)
 np.save("data/Pickles/NWTC/three_hour.npy", three_hour)
 np.save("data/Pickles/NWTC/hour.npy", hour)
+days = average_daily.index.get_level_values(0)
+np.save("data/Pickles/NWTC/days.npy", days)
 
 # load data
 path = "data/tall_tower/oweg/windagl116S1"
@@ -162,7 +168,9 @@ np.save("data/Pickles/Owez/day.npy", day)
 np.save("data/Pickles/Owez/six_hour.npy", six_hour)
 np.save("data/Pickles/Owez/three_hour.npy", three_hour)
 np.save("data/Pickles/Owez/hour.npy", hour)
-"""
+days = average_daily.index.get_level_values(0)
+np.save("data/Pickles/Owez/days.npy", days)
+
 # load data
 data1 = pd.read_table(
     "data/DWD/Aachen_003/produkt_zehn_min_ff_19930429_19991231_00003.txt",
@@ -201,6 +209,9 @@ np.save("data/Pickles/Aachen/day.npy", day)
 np.save("data/Pickles/Aachen/six_hour.npy", six_hour)
 np.save("data/Pickles/Aachen/three_hour.npy", three_hour)
 np.save("data/Pickles/Aachen/hour.npy", hour)
+days = average_daily.index.get_level_values(0)
+np.save("data/Pickles/Aachen/days.npy", days)
+
 # load data
 data1 = pd.read_table(
     "data/DWD/Zugspitze_5792/produkt_zehn_min_ff_19940731_19991231_05792.txt",
@@ -244,6 +255,9 @@ np.save("data/Pickles/Zugspitze/day.npy", day)
 np.save("data/Pickles/Zugspitze/six_hour.npy", six_hour)
 np.save("data/Pickles/Zugspitze/three_hour.npy", three_hour)
 np.save("data/Pickles/Zugspitze/hour.npy", hour)
+days = average_daily.index.get_level_values(0)
+np.save("data/Pickles/Zugspitze/days.npy", days)
+
 # load data
 data1 = pd.read_table(
     "data/DWD/Boltenhagen/produkt_zehn_min_ff_19911107_19991231_00596.txt",
@@ -287,6 +301,9 @@ np.save("data/Pickles/Boltenhagen/day.npy", day)
 np.save("data/Pickles/Boltenhagen/six_hour.npy", six_hour)
 np.save("data/Pickles/Boltenhagen/three_hour.npy", three_hour)
 np.save("data/Pickles/Boltenhagen/hour.npy", hour)
+days = average_daily.index.get_level_values(0)
+np.save("data/Pickles/Boltenhagen/days.npy", days)
+"""
 # load data
 data1 = pd.read_table(
     "data/DWD/Fichtelberg/produkt_zehn_min_ff_19931216_19991231_01357.txt",
@@ -331,3 +348,5 @@ np.save("data/Pickles/Fichtelberg/day.npy", day)
 np.save("data/Pickles/Fichtelberg/six_hour.npy", six_hour)
 np.save("data/Pickles/Fichtelberg/three_hour.npy", three_hour)
 np.save("data/Pickles/Fichtelberg/hour.npy", hour)
+days = average_daily.index.get_level_values(0)
+np.save("data/Pickles/Fichtelberg/days.npy", days)

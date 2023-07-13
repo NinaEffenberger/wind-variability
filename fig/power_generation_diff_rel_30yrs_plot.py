@@ -2,11 +2,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from windspeed_averages_wp import (
-    compute_average_windspeeds,
-    drop_nans_DWD,
-    set_date_DWD,
-)
+from windspeed_averages_wp import compute_average_windspeeds, drop_nans_DWD, set_date_DWD
 
 matplotlib.rcParams.update({"font.size": 12})
 
@@ -21,9 +17,7 @@ daily_winds = np.load("data/power-gen/Aachen/daily_avrg.npy")
 ten_min_winds = np.load("data/power-gen/Aachen/ten_min.npy")
 days = np.load("data/power-gen/Aachen/days.npy", allow_pickle=True)
 
-fig, ax = plt.subplots(
-    2, 4, sharex="col", figsize=(6, 4), sharey=True, constrained_layout=True
-)
+fig, ax = plt.subplots(2, 4, sharex="col", figsize=(6, 4), sharey=True, constrained_layout=True)
 print(((np.cumsum(daily_winds)) / np.cumsum(ten_min_winds)[-1])[-1])
 print(((np.cumsum(three_hourly_winds)) / np.cumsum(ten_min_winds)[-1])[-1])
 print(((np.cumsum(six_hourly_winds)) / np.cumsum(ten_min_winds)[-1])[-1])

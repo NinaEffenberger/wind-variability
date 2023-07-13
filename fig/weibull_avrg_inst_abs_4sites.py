@@ -1,16 +1,14 @@
+import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
-import matplotlib
 
 matplotlib.rcParams.update({"font.size": 12})
-savepath = "plots_paper/plots/weibull_avrg_inst_abs.eps"
+savepath = "plots_eps/weibull_avrg_inst_abs.eps"
 plt.rcParams["axes.prop_cycle"] = plt.cycler(
     color=["#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7"]
 )
 
-fig, ax = plt.subplots(
-    4, 2, sharex=True, sharey=True, figsize=(6, 6), layout="constrained"
-)
+fig, ax = plt.subplots(4, 2, sharex=True, sharey=True, figsize=(6, 6), layout="constrained")
 cs = np.load("data/weibull_params/3_param/cs_kelmarsh.npy")
 scales = np.load("data/weibull_params/3_param/scales_kelmarsh.npy")
 locs = np.load("data/weibull_params/3_param/locs_kelmarsh.npy")
@@ -108,3 +106,4 @@ plt.setp(ax, ylim=custom_ylim)
 fig.supxlabel("Resolution")
 fig.supylabel("Fitted parameter")
 plt.savefig(savepath)
+plt.show()
