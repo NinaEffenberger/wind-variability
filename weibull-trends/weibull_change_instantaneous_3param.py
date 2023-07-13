@@ -4,15 +4,7 @@ import os
 import numpy as np
 import pandas as pd
 import xarray as xr
-from distributions import compute_instantenous_windspeeds, weibull_paramsdef_instanteous
-from windspeed_averages_wp import (
-    compute_average_windspeeds,
-    drop_nans,
-    drop_nans_DWD,
-    load_data,
-    set_date,
-    set_date_DWD,
-)
+from distributions import weibull_paramsdef_instanteous
 
 # load data
 average_10min = np.load("data/Pickles/Kelmarsh/average_10min.npy")

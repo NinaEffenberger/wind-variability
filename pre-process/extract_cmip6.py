@@ -10,35 +10,19 @@ plt.rcParams["axes.prop_cycle"] = plt.cycler(
     color=["#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7"]
 )
 
-six_hours_v = (
-    "/Users/neffenberger/Downloads/vas_6hrPlev_MPI-ESM1-2-LR_historical_r1i1p1f1_gn_199001010300-200912312100.nc"
-)
-six_hours_u = (
-    "/Users/neffenberger/Downloads/uas_6hrPlev_MPI-ESM1-2-LR_historical_r1i1p1f1_gn_199001010300-200912312100.nc"
-)
-three_hours_v = (
-    "/Users/neffenberger/Downloads/vas_E3hr_MPI-ESM1-2-LR_historical_r1i1p1f1_gn_199001010130-200912312230.nc"
-)
-three_hours_u = (
-    "/Users/neffenberger/Downloads/uas_E3hr_MPI-ESM1-2-LR_historical_r1i1p1f1_gn_199001010130-200912312230.nc"
-)
+six_hours_v = "bigdata/CMIP/vas_6hrPlev_MPI-ESM1-2-LR_historical_r1i1p1f1_gn_199001010300-200912312100.nc"
+six_hours_u = "bigdata/CMIP/uas_6hrPlev_MPI-ESM1-2-LR_historical_r1i1p1f1_gn_199001010300-200912312100.nc"
+three_hours_v = "bigdata/CMIP/vas_E3hr_MPI-ESM1-2-LR_historical_r1i1p1f1_gn_199001010130-200912312230.nc"
+three_hours_u = "bigdata/CMIP/uas_E3hr_MPI-ESM1-2-LR_historical_r1i1p1f1_gn_199001010130-200912312230.nc"
 
-day_v = "/Users/neffenberger/Downloads/vas_day_MPI-ESM1-2-LR_historical_r1i1p1f1_gn_19900101-20091231.nc"
-day_u = "/Users/neffenberger/Downloads/uas_day_MPI-ESM1-2-LR_historical_r1i1p1f1_gn_19900101-20091231.nc"
+day_v = "bigdata/CMIP/vas_day_MPI-ESM1-2-LR_historical_r1i1p1f1_gn_19900101-20091231.nc"
+day_u = "bigdata/CMIP/uas_day_MPI-ESM1-2-LR_historical_r1i1p1f1_gn_19900101-20091231.nc"
 
 
-six_hours_pt_v = (
-    "/Users/neffenberger/Downloads/vas_6hrPlevPt_MPI-ESM1-2-LR_historical_r1i1p1f1_gn_199001010600-201001010000.nc"
-)
-six_hours_pt_u = (
-    "/Users/neffenberger/Downloads/uas_6hrPlevPt_MPI-ESM1-2-LR_historical_r1i1p1f1_gn_199001010600-201001010000.nc"
-)
-three_hours_pt_v = (
-    "/Users/neffenberger/Downloads/vas_3hr_MPI-ESM1-2-LR_historical_r1i1p1f1_gn_199001010300-201001010000.nc"
-)
-three_hours_pt_u = (
-    "/Users/neffenberger/Downloads/uas_3hr_MPI-ESM1-2-LR_historical_r1i1p1f1_gn_199001010300-201001010000.nc"
-)
+six_hours_pt_v = "bigdata/CMIP/vas_6hrPlevPt_MPI-ESM1-2-LR_historical_r1i1p1f1_gn_199001010600-201001010000.nc"
+six_hours_pt_u = "bigdata/CMIP/uas_6hrPlevPt_MPI-ESM1-2-LR_historical_r1i1p1f1_gn_199001010600-201001010000.nc"
+three_hours_pt_v = "bigdata/CMIP/vas_3hr_MPI-ESM1-2-LR_historical_r1i1p1f1_gn_199001010300-201001010000.nc"
+three_hours_pt_u = "bigdata/CMIP/uas_3hr_MPI-ESM1-2-LR_historical_r1i1p1f1_gn_199001010300-201001010000.nc"
 
 # Aachen
 lon = 6.0941
