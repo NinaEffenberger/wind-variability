@@ -14,7 +14,6 @@ from windspeed_averages_wp import (
     set_date_DWD,
 )
 
-"""
 # load data
 paths = [
     "data/Kelmarsh/Turbine_Data_Kelmarsh_1_2016-01-03_-_2017-01-01_228.csv",
@@ -303,7 +302,7 @@ np.save("data/Pickles/Boltenhagen/three_hour.npy", three_hour)
 np.save("data/Pickles/Boltenhagen/hour.npy", hour)
 days = average_daily.index.get_level_values(0)
 np.save("data/Pickles/Boltenhagen/days.npy", days)
-"""
+
 # load data
 data1 = pd.read_table(
     "data/DWD/Fichtelberg/produkt_zehn_min_ff_19931216_19991231_01357.txt",

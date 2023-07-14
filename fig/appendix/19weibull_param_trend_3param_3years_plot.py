@@ -111,7 +111,6 @@ ax[1, 3].text(0.03, 0.9, "(8b)", transform=ax[1, 3].transAxes)
 
 fig.supxlabel(r"Resolution")
 fig.supylabel(r"Parameter value")
-
 plt.savefig(savepath)
 
 savepath = "plots_eps/appendix/weibull_param_trend_3param_3years_abs.eps"
@@ -201,6 +200,7 @@ ax[1, 3].set_xticklabels(["10min", "1h", "3h", "6h", "day"])
 
 custom_ylim = (-1, 12)
 plt.setp(ax, ylim=custom_ylim)
+plt.show()
 
 ax[0, 0].yaxis.set_major_formatter(FormatStrFormatter("%.0f"))
 ax[0, 1].yaxis.set_major_formatter(FormatStrFormatter("%.0f"))
@@ -223,3 +223,4 @@ ax[1, 3].text(0.03, 0.9, "(8b)", transform=ax[1, 3].transAxes)
 fig.supxlabel(r"Resolution")
 fig.supylabel(r"Parameter value")
 plt.savefig(savepath)
+plt.show()

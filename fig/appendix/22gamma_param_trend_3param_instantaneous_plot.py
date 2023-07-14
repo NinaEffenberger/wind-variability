@@ -1,0 +1,229 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+plt.rcParams["axes.prop_cycle"] = plt.cycler(
+    color=["#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7"]
+)
+from matplotlib.ticker import FormatStrFormatter
+
+savepath = "plots_eps/appendix/gamma_param_trend_3param_instantaneous.eps"
+
+fig, ax = plt.subplots(2, 4, sharex=True, figsize=(8.27, 4), constrained_layout=True)
+cs = np.load("data/gamma_params/3_param_instantaneous/cs_kelmarsh.npy")
+scales = np.load("data/gamma_params/3_param_instantaneous/scales_kelmarsh.npy")
+locs = np.load("data/gamma_params/3_param_instantaneous/locs_kelmarsh.npy")
+
+ax[0, 0].plot(cs / cs[0], label="a")
+ax[0, 0].plot(scales / scales[0], label="d")
+ax[0, 0].plot(locs / locs[0], label="p")
+ax[0, 0].set_xticks([0, 1, 2, 3, 4])
+ax[0, 0].set_xticklabels(["10min", "1h", "3h", "6h", "day"])
+ax[0, 0].legend(loc="upper center")
+
+cs = np.load("data/gamma_params/3_param_instantaneous/cs_penmanshiel.npy")
+scales = np.load("data/gamma_params/3_param_instantaneous/scales_penmanshiel.npy")
+locs = np.load("data/gamma_params/3_param_instantaneous/locs_penmanshiel.npy")
+
+ax[0, 1].plot(cs / cs[0], label="a")
+ax[0, 1].plot(scales / scales[0], label="d")
+ax[0, 1].plot(locs / locs[0], label="p")
+ax[0, 1].set_xticks([0, 1, 2, 3, 4])
+ax[0, 1].set_xticklabels(["10min", "1h", "3h", "6h", "day"])
+
+cs = np.load("data/gamma_params/3_param_instantaneous/cs_nwtc5.npy")
+scales = np.load("data/gamma_params/3_param_instantaneous/scales_nwtc5.npy")
+locs = np.load("data/gamma_params/3_param_instantaneous/locs_nwtc5.npy")
+
+ax[0, 2].plot(cs / cs[0], label="a")
+ax[0, 2].plot(scales / scales[0], label="d")
+ax[0, 2].plot(locs / locs[0], label="p")
+ax[0, 2].set_xticks([0, 1, 2, 3, 4])
+ax[0, 2].set_xticklabels(["10min", "1h", "3h", "6h", "day"])
+
+cs = np.load("data/gamma_params/3_param_instantaneous/cs_owez.npy")
+scales = np.load("data/gamma_params/3_param_instantaneous/scales_owez.npy")
+locs = np.load("data/gamma_params/3_param_instantaneous/locs_owez.npy")
+
+ax[0, 3].plot(cs / cs[0], label="a")
+ax[0, 3].plot(scales / scales[0], label="d")
+ax[0, 3].plot(locs / locs[0], label="p")
+ax[0, 3].set_xticks([0, 1, 2, 3, 4])
+ax[0, 3].set_xticklabels(["10min", "1h", "3h", "6h", "day"])
+
+
+cs = np.load("data/gamma_params/3_param_instantaneous/cs_aachen.npy")
+scales = np.load("data/gamma_params/3_param_instantaneous/scales_aachen.npy")
+locs = np.load("data/gamma_params/3_param_instantaneous/locs_aachen.npy")
+
+ax[1, 0].plot(cs / cs[0], label="a")
+ax[1, 0].plot(scales / scales[0], label="d")
+ax[1, 0].plot(locs / locs[0], label="p")
+ax[1, 0].set_xticks([0, 1, 2, 3, 4])
+ax[1, 0].set_xticklabels(["10min", "1h", "3h", "6h", "day"])
+
+cs = np.load("data/gamma_params/3_param_instantaneous/cs_zugspitze.npy")
+scales = np.load("data/gamma_params/3_param_instantaneous/scales_zugspitze.npy")
+locs = np.load("data/gamma_params/3_param_instantaneous/locs_zugspitze.npy")
+
+ax[1, 1].plot(cs / cs[0], label="a")
+ax[1, 1].plot(scales / scales[0], label="d")
+ax[1, 1].plot(locs / locs[0], label="p")
+ax[1, 1].set_xticks([0, 1, 2, 3, 4, 5])
+ax[1, 1].set_xticklabels(["10min", "1h", "3h", "6h", "day", "month"])
+
+cs = np.load("data/gamma_params/3_param_instantaneous/cs_boltenhagen.npy")
+scales = np.load("data/gamma_params/3_param_instantaneous/scales_boltenhagen.npy")
+locs = np.load("data/gamma_params/3_param_instantaneous/locs_boltenhagen.npy")
+
+ax[1, 2].plot(cs / cs[0], label="a")
+ax[1, 2].plot(scales / scales[0], label="d")
+ax[1, 2].plot(locs / locs[0], label="p")
+ax[1, 2].set_xticks([0, 1, 2, 3, 4])
+ax[1, 2].set_xticklabels(["10min", "1h", "3h", "6h", "day"])
+
+cs = np.load("data/gamma_params/3_param_instantaneous/cs_fichtelberg.npy")
+scales = np.load("data/gamma_params/3_param_instantaneous/scales_fichtelberg.npy")
+locs = np.load("data/gamma_params/3_param_instantaneous/locs_fichtelberg.npy")
+
+ax[1, 3].plot(cs / cs[0], label="a")
+ax[1, 3].plot(scales / scales[0], label="d")
+ax[1, 3].plot(locs / locs[0], label="p")
+ax[1, 3].set_xticks([0, 1, 2, 3, 4])
+ax[1, 3].set_xticklabels(["10min", "1h", "3h", "6h", "day"])
+
+custom_ylim = (0, 2)
+plt.setp(ax, ylim=custom_ylim)
+
+ax[0, 0].yaxis.set_major_formatter(FormatStrFormatter("%.1f"))
+ax[0, 1].yaxis.set_major_formatter(FormatStrFormatter("%.1f"))
+ax[0, 2].yaxis.set_major_formatter(FormatStrFormatter("%.1f"))
+ax[0, 3].yaxis.set_major_formatter(FormatStrFormatter("%.1f"))
+ax[1, 0].yaxis.set_major_formatter(FormatStrFormatter("%.1f"))
+ax[1, 1].yaxis.set_major_formatter(FormatStrFormatter("%.1f"))
+ax[1, 2].yaxis.set_major_formatter(FormatStrFormatter("%.1f"))
+ax[1, 3].yaxis.set_major_formatter(FormatStrFormatter("%.1f"))
+
+ax[0, 0].text(0.03, 0.9, "(1)", transform=ax[0, 0].transAxes)
+ax[0, 1].text(0.03, 0.9, "(2)", transform=ax[0, 1].transAxes)
+ax[0, 2].text(0.03, 0.9, "(3)", transform=ax[0, 2].transAxes)
+ax[0, 3].text(0.03, 0.9, "(4)", transform=ax[0, 3].transAxes)
+ax[1, 0].text(0.03, 0.9, "(5)", transform=ax[1, 0].transAxes)
+ax[1, 1].text(0.03, 0.9, "(6)", transform=ax[1, 1].transAxes)
+ax[1, 2].text(0.03, 0.9, "(7)", transform=ax[1, 2].transAxes)
+ax[1, 3].text(0.03, 0.9, "(8)", transform=ax[1, 3].transAxes)
+
+fig.supxlabel(r"Resolution")
+fig.supylabel(r"Parameter value")
+plt.savefig(savepath)
+plt.show()
+savepath = "plots_eps/appendix/gamma_param_trend_3param_instantaneous_abs.eps"
+
+fig, ax = plt.subplots(2, 4, sharex=True, figsize=(8.27, 4), constrained_layout=True)
+cs = np.load("data/gamma_params/3_param_instantaneous/cs_kelmarsh.npy")
+scales = np.load("data/gamma_params/3_param_instantaneous/scales_kelmarsh.npy")
+locs = np.load("data/gamma_params/3_param_instantaneous/locs_kelmarsh.npy")
+
+print(locs)
+ax[0, 0].plot(cs, label="a")
+ax[0, 0].plot(scales, label="d")
+ax[0, 0].plot(locs, label="p")
+ax[0, 0].set_xticks([0, 1, 2, 3, 4])
+ax[0, 0].set_xticklabels(["10min", "1h", "3h", "6h", "day"])
+ax[0, 0].legend(loc="upper center")
+
+cs = np.load("data/gamma_params/3_param_instantaneous/cs_penmanshiel.npy")
+scales = np.load("data/gamma_params/3_param_instantaneous/scales_penmanshiel.npy")
+locs = np.load("data/gamma_params/3_param_instantaneous/locs_penmanshiel.npy")
+
+ax[0, 1].plot(cs, label="a")
+ax[0, 1].plot(scales, label="d")
+ax[0, 1].plot(locs, label="p")
+ax[0, 1].set_xticks([0, 1, 2, 3, 4])
+ax[0, 1].set_xticklabels(["10min", "1h", "3h", "6h", "day"])
+
+cs = np.load("data/gamma_params/3_param_instantaneous/cs_nwtc5.npy")
+scales = np.load("data/gamma_params/3_param_instantaneous/scales_nwtc5.npy")
+locs = np.load("data/gamma_params/3_param_instantaneous/locs_nwtc5.npy")
+
+ax[0, 2].plot(cs, label="a")
+ax[0, 2].plot(scales, label="d")
+ax[0, 2].plot(locs, label="p")
+ax[0, 2].set_xticks([0, 1, 2, 3, 4])
+ax[0, 2].set_xticklabels(["10min", "1h", "3h", "6h", "day"])
+
+cs = np.load("data/gamma_params/3_param_instantaneous/cs_owez.npy")
+scales = np.load("data/gamma_params/3_param_instantaneous/scales_owez.npy")
+locs = np.load("data/gamma_params/3_param_instantaneous/locs_owez.npy")
+
+ax[0, 3].plot(cs, label="a")
+ax[0, 3].plot(scales, label="d")
+ax[0, 3].plot(locs, label="p")
+ax[0, 3].set_xticks([0, 1, 2, 3, 4])
+ax[0, 3].set_xticklabels(["10min", "1h", "3h", "6h", "day"])
+
+cs = np.load("data/gamma_params/3_param_instantaneous/cs_aachen.npy")
+scales = np.load("data/gamma_params/3_param_instantaneous/scales_aachen.npy")
+locs = np.load("data/gamma_params/3_param_instantaneous/locs_aachen.npy")
+
+ax[1, 0].plot(cs, label="a")
+ax[1, 0].plot(scales, label="d")
+ax[1, 0].plot(locs, label="p")
+ax[1, 0].set_xticks([0, 1, 2, 3, 4])
+ax[1, 0].set_xticklabels(["10min", "1h", "3h", "6h", "day"])
+
+cs = np.load("data/gamma_params/3_param_instantaneous/cs_zugspitze.npy")
+scales = np.load("data/gamma_params/3_param_instantaneous/scales_zugspitze.npy")
+locs = np.load("data/gamma_params/3_param_instantaneous/locs_zugspitze.npy")
+
+ax[1, 1].plot(cs, label="a")
+ax[1, 1].plot(scales, label="d")
+ax[1, 1].plot(locs, label="p")
+ax[1, 1].set_xticks([0, 1, 2, 3, 4, 5])
+ax[1, 1].set_xticklabels(["10min", "1h", "3h", "6h", "day", "month"])
+
+cs = np.load("data/gamma_params/3_param_instantaneous/cs_boltenhagen.npy")
+scales = np.load("data/gamma_params/3_param_instantaneous/scales_boltenhagen.npy")
+locs = np.load("data/gamma_params/3_param_instantaneous/locs_boltenhagen.npy")
+
+ax[1, 2].plot(cs, label="a")
+ax[1, 2].plot(scales, label="d")
+ax[1, 2].plot(locs, label="p")
+ax[1, 2].set_xticks([0, 1, 2, 3, 4])
+ax[1, 2].set_xticklabels(["10min", "1h", "3h", "6h", "day"])
+
+cs = np.load("data/gamma_params/3_param_instantaneous/cs_fichtelberg.npy")
+scales = np.load("data/gamma_params/3_param_instantaneous/scales_fichtelberg.npy")
+locs = np.load("data/gamma_params/3_param_instantaneous/locs_fichtelberg.npy")
+
+ax[1, 3].plot(cs, label="a")
+ax[1, 3].plot(scales, label="d")
+ax[1, 3].plot(locs, label="p")
+ax[1, 3].set_xticks([0, 1, 2, 3, 4])
+ax[1, 3].set_xticklabels(["10min", "1h", "3h", "6h", "day"])
+
+custom_ylim = (-3, 18)
+plt.setp(ax, ylim=custom_ylim)
+
+ax[0, 0].yaxis.set_major_formatter(FormatStrFormatter("%.0f"))
+ax[0, 1].yaxis.set_major_formatter(FormatStrFormatter("%.0f"))
+ax[0, 2].yaxis.set_major_formatter(FormatStrFormatter("%.0f"))
+ax[0, 3].yaxis.set_major_formatter(FormatStrFormatter("%.0f"))
+ax[1, 0].yaxis.set_major_formatter(FormatStrFormatter("%.0f"))
+ax[1, 1].yaxis.set_major_formatter(FormatStrFormatter("%.0f"))
+ax[1, 2].yaxis.set_major_formatter(FormatStrFormatter("%.0f"))
+ax[1, 3].yaxis.set_major_formatter(FormatStrFormatter("%.0f"))
+
+ax[0, 0].text(0.03, 0.9, "(1)", transform=ax[0, 0].transAxes)
+ax[0, 1].text(0.03, 0.9, "(2)", transform=ax[0, 1].transAxes)
+ax[0, 2].text(0.03, 0.9, "(3)", transform=ax[0, 2].transAxes)
+ax[0, 3].text(0.03, 0.9, "(4)", transform=ax[0, 3].transAxes)
+ax[1, 0].text(0.03, 0.9, "(5)", transform=ax[1, 0].transAxes)
+ax[1, 1].text(0.03, 0.9, "(6)", transform=ax[1, 1].transAxes)
+ax[1, 2].text(0.03, 0.9, "(7)", transform=ax[1, 2].transAxes)
+ax[1, 3].text(0.03, 0.9, "(8)", transform=ax[1, 3].transAxes)
+
+fig.supxlabel(r"Resolution")
+fig.supylabel(r"Parameter value")
+
+plt.savefig(savepath)
+plt.show()
