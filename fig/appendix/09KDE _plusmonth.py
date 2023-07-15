@@ -5,7 +5,7 @@ import seaborn as sns
 from matplotlib.ticker import FormatStrFormatter
 
 plt.rcParams["axes.prop_cycle"] = plt.cycler(
-    color=["#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7"]
+    color=["#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#CC79A7", "#D55E00"]
 )
 fig, ax = plt.subplots(2, 4, sharex=True, figsize=(8.27, 4), constrained_layout=True)
 
@@ -214,4 +214,5 @@ fig.legend(loc="outside right center")
 
 fig.supxlabel(r"Wind speed ($\frac{m}{s}$)")
 fig.supylabel(r"Density")
-plt.savefig("plots_eps/appendix/KDE_plusmonth.eps")
+plt.savefig("other-figs/KDE_instantaneous.eps")
+plt.show()
