@@ -13,8 +13,8 @@ plt.rcParams["axes.prop_cycle"] = plt.cycler(
 )
 fig, ax = plt.subplots(2, 4, sharex="col", figsize=(6, 4), constrained_layout=True, sharey=True)
 
-data = "/Users/neffenberger/Downloads/uas_E3hr_MPI-ESM1-2-LR_historical_r1i1p1f1_gn_199001010130-200912312230.nc"
-data = xr.open_dataset(data)
+dates_avergage = np.load("data/cmip6/data/Aachen/times_averages_three.npy")
+
 # load data
 time_series_day = np.load("data/cmip6/data/Kelmarsh/time_series_day.npy")
 time_series_six = np.load("data/cmip6/data/Kelmarsh/time_series_six.npy")
@@ -32,24 +32,24 @@ time_series_six_pt = np.load("data/cmip6/data/Kelmarsh/time_series_six_pt.npy")
 
 
 ax[0, 0].plot(
-    data.time.values[::8],
+    dates_avergage[::8],
     (np.cumsum(power_day)) / np.cumsum(power_three_pt)[-1],
     linewidth=1,
 )
 # ax[1, 0].plot(days, (np.cumsum(hourly_winds)- np.cumsum(ten_min_winds)), label="hourly", linewidth=1)
 ax[0, 0].plot(
-    data.time.values[::8],
+    dates_avergage[::8],
     (np.cumsum(power_six_avrg)) / np.cumsum(power_three_pt)[-1],
     linewidth=1,
 )
 ax[0, 0].plot(
-    data.time.values[::8],
+    dates_avergage[::8],
     (np.cumsum(power_six_pt)) / np.cumsum(power_three_pt)[-1],
     linewidth=1,
 )
 
 ax[0, 0].plot(
-    data.time.values[::8],
+    dates_avergage[::8],
     (np.cumsum(power_three_avr)) / np.cumsum(power_three_pt)[-1],
     linewidth=1,
 )
@@ -78,24 +78,24 @@ time_series_six_pt = np.load("data/cmip6/data/Penmanshiel/time_series_six_pt.npy
 
 
 ax[0, 1].plot(
-    data.time.values[::8],
+    dates_avergage[::8],
     (np.cumsum(power_day)) / np.cumsum(power_three_pt)[-1],
     linewidth=1,
 )
 # ax[1, 0].plot(days, (np.cumsum(hourly_winds)- np.cumsum(ten_min_winds)), label="hourly", linewidth=1)
 ax[0, 1].plot(
-    data.time.values[::8],
+    dates_avergage[::8],
     (np.cumsum(power_six_avrg)) / np.cumsum(power_three_pt)[-1],
     linewidth=1,
 )
 ax[0, 1].plot(
-    data.time.values[::8],
+    dates_avergage[::8],
     (np.cumsum(power_six_pt)) / np.cumsum(power_three_pt)[-1],
     linewidth=1,
 )
 
 ax[0, 1].plot(
-    data.time.values[::8],
+    dates_avergage[::8],
     (np.cumsum(power_three_avr)) / np.cumsum(power_three_pt)[-1],
     linewidth=1,
 )
@@ -122,23 +122,23 @@ time_series_six_pt = np.load("data/cmip6/data/NWTC/time_series_six_pt.npy")
 
 
 ax[0, 2].plot(
-    data.time.values[::8],
+    dates_avergage[::8],
     (np.cumsum(power_day)) / np.cumsum(power_three_pt)[-1],
     linewidth=1,
 )
 ax[0, 2].plot(
-    data.time.values[::8],
+    dates_avergage[::8],
     (np.cumsum(power_six_avrg)) / np.cumsum(power_three_pt)[-1],
     linewidth=1,
 )
 ax[0, 2].plot(
-    data.time.values[::8],
+    dates_avergage[::8],
     (np.cumsum(power_six_pt)) / np.cumsum(power_three_pt)[-1],
     linewidth=1,
 )
 
 ax[0, 2].plot(
-    data.time.values[::8],
+    dates_avergage[::8],
     (np.cumsum(power_three_avr)) / np.cumsum(power_three_pt)[-1],
     linewidth=1,
 )
@@ -165,29 +165,29 @@ time_series_six_pt = np.load("data/cmip6/data/Owez/time_series_six_pt.npy")
 
 
 ax[0, 3].plot(
-    data.time.values[::8],
+    dates_avergage[::8],
     (np.cumsum(power_day)) / np.cumsum(power_three_pt)[-1],
     linewidth=1,
 )
-# ax[1, 0].plot(data.time.values[::8],days, (np.cumsum(hourly_winds)- np.cumsum(ten_min_winds)), label="hourly", linewidth=1)
+# ax[1, 0].plot(dates_avergage[::8],days, (np.cumsum(hourly_winds)- np.cumsum(ten_min_winds)), label="hourly", linewidth=1)
 ax[0, 3].plot(
-    data.time.values[::8],
+    dates_avergage[::8],
     (np.cumsum(power_six_avrg)) / np.cumsum(power_three_pt)[-1],
     linewidth=1,
 )
 ax[0, 3].plot(
-    data.time.values[::8],
+    dates_avergage[::8],
     (np.cumsum(power_six_pt)) / np.cumsum(power_three_pt)[-1],
     linewidth=1,
 )
 
 ax[0, 3].plot(
-    data.time.values[::8],
+    dates_avergage[::8],
     (np.cumsum(power_three_avr)) / np.cumsum(power_three_pt)[-1],
     linewidth=1,
 )
 
-# ax[1, 0].plot(data.time.values[::8],days, (np.cumsum(ten_min_winds)- np.cumsum(ten_min_winds)), label="ten min", linewidth=1)
+# ax[1, 0].plot(dates_avergage[::8],days, (np.cumsum(ten_min_winds)- np.cumsum(ten_min_winds)), label="ten min", linewidth=1)
 # ax[1].set_xlim(data['date'].dt.year.iloc[0], data['date'].dt.year.iloc[-1])
 ax[0, 3].xaxis.set_major_locator(matplotlib.dates.YearLocator(base=10))
 ax[0, 3].xaxis.set_major_formatter(matplotlib.dates.DateFormatter("%Y"))
@@ -210,27 +210,27 @@ time_series_six_pt = np.load("data/cmip6/data/Aachen/time_series_six_pt.npy")
 
 
 ax[1, 0].plot(
-    data.time.values[::8],
+    dates_avergage[::8],
     (np.cumsum(power_day)) / np.cumsum(power_three_pt)[-1],
     label="day",
     linewidth=1,
 )
 # ax[1, 0].plot(days, (np.cumsum(hourly_winds)- np.cumsum(ten_min_winds)), label="hourly", linewidth=1)
 ax[1, 0].plot(
-    data.time.values[::8],
+    dates_avergage[::8],
     (np.cumsum(power_six_avrg)) / np.cumsum(power_three_pt)[-1],
     label=r"$6h _{avrg}$",
     linewidth=1,
 )
 ax[1, 0].plot(
-    data.time.values[::8],
+    dates_avergage[::8],
     (np.cumsum(power_six_pt)) / np.cumsum(power_three_pt)[-1],
     label=r"$6h _{inst}$",
     linewidth=1,
 )
 
 ax[1, 0].plot(
-    data.time.values[::8],
+    dates_avergage[::8],
     (np.cumsum(power_three_avr)) / np.cumsum(power_three_pt)[-1],
     label=r"$3h _{avrg}$",
     linewidth=1,
@@ -259,24 +259,24 @@ time_series_six_pt = np.load("data/cmip6/data/Zugspitze/time_series_six_pt.npy")
 
 
 ax[1, 1].plot(
-    data.time.values[::8],
+    dates_avergage[::8],
     (np.cumsum(power_day)) / np.cumsum(power_three_pt)[-1],
     linewidth=1,
 )
-# ax[1, 0].plot(data.time.values[::8],days, (np.cumsum(hourly_winds)- np.cumsum(ten_min_winds)), label="hourly", linewidth=1)
+# ax[1, 0].plot(dates_avergage[::8],days, (np.cumsum(hourly_winds)- np.cumsum(ten_min_winds)), label="hourly", linewidth=1)
 ax[1, 1].plot(
-    data.time.values[::8],
+    dates_avergage[::8],
     (np.cumsum(power_six_avrg)) / np.cumsum(power_three_pt)[-1],
     linewidth=1,
 )
 ax[1, 1].plot(
-    data.time.values[::8],
+    dates_avergage[::8],
     (np.cumsum(power_six_pt)) / np.cumsum(power_three_pt)[-1],
     linewidth=1,
 )
 
 ax[1, 1].plot(
-    data.time.values[::8],
+    dates_avergage[::8],
     (np.cumsum(power_three_avr)) / np.cumsum(power_three_pt)[-1],
     linewidth=1,
 )
@@ -304,24 +304,24 @@ time_series_six_pt = np.load("data/cmip6/data/Boltenhagen/time_series_six_pt.npy
 
 
 ax[1, 2].plot(
-    data.time.values[::8],
+    dates_avergage[::8],
     (np.cumsum(power_day)) / np.cumsum(power_three_pt)[-1],
     linewidth=1,
 )
-# ax[1, 0].plot(data.time.values[::8],days, (np.cumsum(hourly_winds)- np.cumsum(ten_min_winds)), label="hourly", linewidth=1)
+# ax[1, 0].plot(dates_avergage[::8],days, (np.cumsum(hourly_winds)- np.cumsum(ten_min_winds)), label="hourly", linewidth=1)
 ax[1, 2].plot(
-    data.time.values[::8],
+    dates_avergage[::8],
     (np.cumsum(power_six_avrg)) / np.cumsum(power_three_pt)[-1],
     linewidth=1,
 )
 ax[1, 2].plot(
-    data.time.values[::8],
+    dates_avergage[::8],
     (np.cumsum(power_six_pt)) / np.cumsum(power_three_pt)[-1],
     linewidth=1,
 )
 
 ax[1, 2].plot(
-    data.time.values[::8],
+    dates_avergage[::8],
     (np.cumsum(power_three_avr)) / np.cumsum(power_three_pt)[-1],
     linewidth=1,
 )
@@ -349,24 +349,24 @@ time_series_six_pt = np.load("data/cmip6/data/Fichtelberg/time_series_six_pt.npy
 
 
 ax[1, 3].plot(
-    data.time.values[::8],
+    dates_avergage[::8],
     (np.cumsum(power_day)) / np.cumsum(power_three_pt)[-1],
     linewidth=1,
 )
-# ax[1, 0].plot(data.time.values[::8],days, (np.cumsum(hourly_winds)- np.cumsum(ten_min_winds)), label="hourly", linewidth=1)
+# ax[1, 0].plot(dates_avergage[::8],days, (np.cumsum(hourly_winds)- np.cumsum(ten_min_winds)), label="hourly", linewidth=1)
 ax[1, 3].plot(
-    data.time.values[::8],
+    dates_avergage[::8],
     (np.cumsum(power_six_avrg)) / np.cumsum(power_three_pt)[-1],
     linewidth=1,
 )
 ax[1, 3].plot(
-    data.time.values[::8],
+    dates_avergage[::8],
     (np.cumsum(power_six_pt)) / np.cumsum(power_three_pt)[-1],
     linewidth=1,
 )
 
 ax[1, 3].plot(
-    data.time.values[::8],
+    dates_avergage[::8],
     (np.cumsum(power_three_avr)) / np.cumsum(power_three_pt)[-1],
     linewidth=1,
 )

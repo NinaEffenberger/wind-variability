@@ -38,6 +38,7 @@ time_series_three_hours_u = three_hours_u.sel(lat=lat, lon=lon, method="nearest"
 time_series_three_hours_v = three_hours_v.sel(lat=lat, lon=lon, method="nearest").vas
 time_series_three = np.sqrt(time_series_three_hours_u**2 + time_series_three_hours_v**2)
 np.save(savepath + "/time_series_three.npy", time_series_three)
+np.save(savepath + "/times_averages_three.npy", three_hours_v.time.values)
 
 day_v = xr.open_dataset(day_v)
 day_u = xr.open_dataset(day_u)
@@ -59,6 +60,7 @@ time_series_three_hours_pt_u = three_hours_pt_u.sel(lat=lat, lon=lon, method="ne
 time_series_three_hours_pt_v = three_hours_pt_v.sel(lat=lat, lon=lon, method="nearest").vas
 time_series_three_pt = np.sqrt(time_series_three_hours_pt_u**2 + time_series_three_hours_pt_v**2)
 np.save(savepath + "/time_series_three_pt.npy", time_series_three_pt)
+np.save(savepath + "/times_instantaneous_three.npy", three_hours_pt_v.time.values)
 
 # Boltenhagen
 lon = 11.19
@@ -78,6 +80,7 @@ time_series_three_hours_u = three_hours_u.sel(lat=lat, lon=lon, method="nearest"
 time_series_three_hours_v = three_hours_v.sel(lat=lat, lon=lon, method="nearest").vas
 time_series_three = np.sqrt(time_series_three_hours_u**2 + time_series_three_hours_v**2)
 np.save(savepath + "/time_series_three.npy", time_series_three)
+np.save(savepath + "/times_averages_three.npy", three_hours_v.time.values)
 
 day_v = xr.open_dataset(day_v)
 day_u = xr.open_dataset(day_u)
@@ -99,6 +102,7 @@ time_series_three_hours_pt_u = three_hours_pt_u.sel(lat=lat, lon=lon, method="ne
 time_series_three_hours_pt_v = three_hours_pt_v.sel(lat=lat, lon=lon, method="nearest").vas
 time_series_three_pt = np.sqrt(time_series_three_hours_pt_u**2 + time_series_three_hours_pt_v**2)
 np.save(savepath + "/time_series_three_pt.npy", time_series_three_pt)
+np.save(savepath + "/times_instantanoeus_three.npy", three_hours_pt_v.time.values)
 
 # Zugspitze
 lon = 10.98
@@ -118,6 +122,7 @@ time_series_three_hours_u = three_hours_u.sel(lat=lat, lon=lon, method="nearest"
 time_series_three_hours_v = three_hours_v.sel(lat=lat, lon=lon, method="nearest").vas
 time_series_three = np.sqrt(time_series_three_hours_u**2 + time_series_three_hours_v**2)
 np.save(savepath + "/time_series_three.npy", time_series_three)
+np.save(savepath + "/times_averages_three.npy", three_hours_v.time.values)
 
 day_v = xr.open_dataset(day_v)
 day_u = xr.open_dataset(day_u)
@@ -139,7 +144,7 @@ time_series_three_hours_pt_u = three_hours_pt_u.sel(lat=lat, lon=lon, method="ne
 time_series_three_hours_pt_v = three_hours_pt_v.sel(lat=lat, lon=lon, method="nearest").vas
 time_series_three_pt = np.sqrt(time_series_three_hours_pt_u**2 + time_series_three_hours_pt_v**2)
 np.save(savepath + "/time_series_three_pt.npy", time_series_three_pt)
-
+np.save(savepath + "/times_instantaneous_three.npy", three_hours_pt_v.time.values)
 # Fichtelberg
 lon = 11.84
 lat = 49.98
@@ -158,6 +163,7 @@ time_series_three_hours_u = three_hours_u.sel(lat=lat, lon=lon, method="nearest"
 time_series_three_hours_v = three_hours_v.sel(lat=lat, lon=lon, method="nearest").vas
 time_series_three = np.sqrt(time_series_three_hours_u**2 + time_series_three_hours_v**2)
 np.save(savepath + "/time_series_three.npy", time_series_three)
+np.save(savepath + "/times_averages_three.npy", three_hours_v.time.values)
 
 day_v = xr.open_dataset(day_v)
 day_u = xr.open_dataset(day_u)
@@ -179,7 +185,7 @@ time_series_three_hours_pt_u = three_hours_pt_u.sel(lat=lat, lon=lon, method="ne
 time_series_three_hours_pt_v = three_hours_pt_v.sel(lat=lat, lon=lon, method="nearest").vas
 time_series_three_pt = np.sqrt(time_series_three_hours_pt_u**2 + time_series_three_hours_pt_v**2)
 np.save(savepath + "/time_series_three_pt.npy", time_series_three_pt)
-
+np.save(savepath + "/times_instantaneous_three.npy", three_hours_pt_v.time.values)
 
 # Kelmarsh
 lon = 360 - 0.95
@@ -199,6 +205,7 @@ time_series_three_hours_u = three_hours_u.sel(lat=lat, lon=lon, method="nearest"
 time_series_three_hours_v = three_hours_v.sel(lat=lat, lon=lon, method="nearest").vas
 time_series_three = np.sqrt(time_series_three_hours_u**2 + time_series_three_hours_v**2)
 np.save(savepath + "/time_series_three.npy", time_series_three)
+np.save(savepath + "/times_averages_three.npy", three_hours_v.time.values)
 
 day_v = xr.open_dataset(day_v)
 day_u = xr.open_dataset(day_u)
@@ -220,6 +227,7 @@ time_series_three_hours_pt_u = three_hours_pt_u.sel(lat=lat, lon=lon, method="ne
 time_series_three_hours_pt_v = three_hours_pt_v.sel(lat=lat, lon=lon, method="nearest").vas
 time_series_three_pt = np.sqrt(time_series_three_hours_pt_u**2 + time_series_three_hours_pt_v**2)
 np.save(savepath + "/time_series_three_pt.npy", time_series_three_pt)
+np.save(savepath + "/times_instantaneous_three.npy", three_hours_pt_v.time.values)
 
 # Penmanshiel
 lon = 360 - 2.31
@@ -239,6 +247,7 @@ time_series_three_hours_u = three_hours_u.sel(lat=lat, lon=lon, method="nearest"
 time_series_three_hours_v = three_hours_v.sel(lat=lat, lon=lon, method="nearest").vas
 time_series_three = np.sqrt(time_series_three_hours_u**2 + time_series_three_hours_v**2)
 np.save(savepath + "/time_series_three.npy", time_series_three)
+np.save(savepath + "/times_averages_three.npy", three_hours_v.time.values)
 
 day_v = xr.open_dataset(day_v)
 day_u = xr.open_dataset(day_u)
@@ -260,7 +269,7 @@ time_series_three_hours_pt_u = three_hours_pt_u.sel(lat=lat, lon=lon, method="ne
 time_series_three_hours_pt_v = three_hours_pt_v.sel(lat=lat, lon=lon, method="nearest").vas
 time_series_three_pt = np.sqrt(time_series_three_hours_pt_u**2 + time_series_three_hours_pt_v**2)
 np.save(savepath + "/time_series_three_pt.npy", time_series_three_pt)
-
+np.save(savepath + "/times_instantaneous_three.npy", three_hours_pt_v.time.values)
 
 # Owez
 lon = 4.39
@@ -280,6 +289,7 @@ time_series_three_hours_u = three_hours_u.sel(lat=lat, lon=lon, method="nearest"
 time_series_three_hours_v = three_hours_v.sel(lat=lat, lon=lon, method="nearest").vas
 time_series_three = np.sqrt(time_series_three_hours_u**2 + time_series_three_hours_v**2)
 np.save(savepath + "/time_series_three.npy", time_series_three)
+np.save(savepath + "/times_averages_three.npy", three_hours_v.time.values)
 
 day_v = xr.open_dataset(day_v)
 day_u = xr.open_dataset(day_u)
@@ -301,6 +311,7 @@ time_series_three_hours_pt_u = three_hours_pt_u.sel(lat=lat, lon=lon, method="ne
 time_series_three_hours_pt_v = three_hours_pt_v.sel(lat=lat, lon=lon, method="nearest").vas
 time_series_three_pt = np.sqrt(time_series_three_hours_pt_u**2 + time_series_three_hours_pt_v**2)
 np.save(savepath + "/time_series_three_pt.npy", time_series_three_pt)
+np.save(savepath + "/times_instantaneous_three.npy", three_hours_pt_v.time.values)
 
 # NWTC
 lon = 360 - 105.23
@@ -320,6 +331,7 @@ time_series_three_hours_u = three_hours_u.sel(lat=lat, lon=lon, method="nearest"
 time_series_three_hours_v = three_hours_v.sel(lat=lat, lon=lon, method="nearest").vas
 time_series_three = np.sqrt(time_series_three_hours_u**2 + time_series_three_hours_v**2)
 np.save(savepath + "/time_series_three.npy", time_series_three)
+np.save(savepath + "/times_averages_three.npy", three_hours_v.time.values)
 
 day_v = xr.open_dataset(day_v)
 day_u = xr.open_dataset(day_u)
@@ -341,3 +353,4 @@ time_series_three_hours_pt_u = three_hours_pt_u.sel(lat=lat, lon=lon, method="ne
 time_series_three_hours_pt_v = three_hours_pt_v.sel(lat=lat, lon=lon, method="nearest").vas
 time_series_three_pt = np.sqrt(time_series_three_hours_pt_u**2 + time_series_three_hours_pt_v**2)
 np.save(savepath + "/time_series_three_pt.npy", time_series_three_pt)
+np.save(savepath + "/times_instantaneous_three.npy", three_hours_pt_v.time.values)
