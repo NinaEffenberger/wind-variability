@@ -16,11 +16,11 @@ from windspeed_averages_wp import (
 
 # load data
 paths = [
-    "data/Kelmarsh/Turbine_Data_Kelmarsh_1_2016-01-03_-_2017-01-01_228.csv",
-    "data/Kelmarsh/Turbine_Data_Kelmarsh_1_2017-01-01_-_2018-01-01_228.csv",
-    "data/Kelmarsh/Turbine_Data_Kelmarsh_1_2018-01-01_-_2019-01-01_228.csv",
-    "data/Kelmarsh/Turbine_Data_Kelmarsh_1_2019-01-01_-_2020-01-01_228.csv",
-    "data/Kelmarsh/Turbine_Data_Kelmarsh_1_2020-01-01_-_2021-01-01_228.csv",
+    "bigdata/Kelmarsh/Turbine_Data_Kelmarsh_1_2016-01-03_-_2017-01-01_228.csv",
+    "bigdata/Kelmarsh/Turbine_Data_Kelmarsh_1_2017-01-01_-_2018-01-01_228.csv",
+    "bigdata/Kelmarsh/Turbine_Data_Kelmarsh_1_2018-01-01_-_2019-01-01_228.csv",
+    "bigdata/Kelmarsh/Turbine_Data_Kelmarsh_1_2019-01-01_-_2020-01-01_228.csv",
+    "bigdata/Kelmarsh/Turbine_Data_Kelmarsh_1_2020-01-01_-_2021-01-01_228.csv",
 ]
 data = load_data(paths)
 set_date(data, current_name="Date and time")
@@ -36,25 +36,25 @@ data = drop_nans(data, average_daily)
 ) = compute_average_windspeeds(data, windspeeds="Wind speed (m/s)")
 
 day, six_hour, three_hour, hour = compute_instantenous_windspeeds(data, windspeeds="Wind speed (m/s)")
-np.save("data/Pickles/Kelmarsh/average_daily.npy", average_daily)
-np.save("data/Pickles/Kelmarsh/average_hourly.npy", average_hourly)
-np.save("data/Pickles/Kelmarsh/average_10min.npy", average_10min)
-np.save("data/Pickles/Kelmarsh/average_monthly.npy", average_monthly)
-np.save("data/Pickles/Kelmarsh/day.npy", day)
-np.save("data/Pickles/Kelmarsh/six_hour.npy", six_hour)
-np.save("data/Pickles/Kelmarsh/three_hour.npy", three_hour)
-np.save("data/Pickles/Kelmarsh/hour.npy", hour)
+np.save("bigdata/Pickles/Kelmarsh/average_daily.npy", average_daily)
+np.save("bigdata/Pickles/Kelmarsh/average_hourly.npy", average_hourly)
+np.save("bigdata/Pickles/Kelmarsh/average_10min.npy", average_10min)
+np.save("bigdata/Pickles/Kelmarsh/average_monthly.npy", average_monthly)
+np.save("bigdata/Pickles/Kelmarsh/day.npy", day)
+np.save("bigdata/Pickles/Kelmarsh/six_hour.npy", six_hour)
+np.save("bigdata/Pickles/Kelmarsh/three_hour.npy", three_hour)
+np.save("bigdata/Pickles/Kelmarsh/hour.npy", hour)
 days = average_daily.index.get_level_values(0)
-np.save("data/Pickles/Kelmarsh/days.npy", days)
+np.save("bigdata/Pickles/Kelmarsh/days.npy", days)
 
 
 # load data
 paths = [
-    "data/Penmanshiel/Turbine_Data_Penmanshiel_11_2016-07-19_-_2017-01-01_1051.csv",
-    "data/Penmanshiel/Turbine_Data_Penmanshiel_11_2017-01-01_-_2018-01-01_1051.csv",
-    "data/Penmanshiel/Turbine_Data_Penmanshiel_11_2018-01-01_-_2019-01-01_1051.csv",
-    "data/Penmanshiel/Turbine_Data_Penmanshiel_11_2019-01-01_-_2020-01-01_1051.csv",
-    "data/Penmanshiel/Turbine_Data_Penmanshiel_11_2020-01-01_-_2021-01-01_1051.csv",
+    "bigdata/Penmanshiel/Turbine_Data_Penmanshiel_11_2016-07-19_-_2017-01-01_1051.csv",
+    "bigdata/Penmanshiel/Turbine_Data_Penmanshiel_11_2017-01-01_-_2018-01-01_1051.csv",
+    "bigdata/Penmanshiel/Turbine_Data_Penmanshiel_11_2018-01-01_-_2019-01-01_1051.csv",
+    "bigdata/Penmanshiel/Turbine_Data_Penmanshiel_11_2019-01-01_-_2020-01-01_1051.csv",
+    "bigdata/Penmanshiel/Turbine_Data_Penmanshiel_11_2020-01-01_-_2021-01-01_1051.csv",
 ]
 data = load_data(paths)
 set_date(data, current_name="Date and time")
@@ -82,7 +82,7 @@ days = average_daily.index.get_level_values(0)
 np.save("data/Pickles/Penmanshiel/days.npy", days)
 
 # load data
-path = "data/tall_tower/nwtc_m5/huragl87S1/windagl87S1"
+path = "bigdata/tall_tower/nwtc_m5/huragl87S1/windagl87S1"
 files = glob.glob(os.path.join(path, "*.nc"))
 
 data = None
@@ -126,7 +126,7 @@ days = average_daily.index.get_level_values(0)
 np.save("data/Pickles/NWTC/days.npy", days)
 
 # load data
-path = "data/tall_tower/oweg/windagl116S1"
+path = "bigdata/tall_tower/oweg/windagl116S1"
 files = glob.glob(os.path.join(path, "*.nc"))
 
 data = None
@@ -172,17 +172,17 @@ np.save("data/Pickles/Owez/days.npy", days)
 
 # load data
 data1 = pd.read_table(
-    "data/DWD/Aachen_003/produkt_zehn_min_ff_19930429_19991231_00003.txt",
+    "bigdata/DWD/Aachen_003/produkt_zehn_min_ff_19930429_19991231_00003.txt",
     header=0,
     sep=";",
 )
 data2 = pd.read_table(
-    "data/DWD/Aachen_003/produkt_zehn_min_ff_20000101_20091231_00003.txt",
+    "bigdata/DWD/Aachen_003/produkt_zehn_min_ff_20000101_20091231_00003.txt",
     header=0,
     sep=";",
 )
 data3 = pd.read_table(
-    "data/DWD/Aachen_003/produkt_zehn_min_ff_20100101_20110331_00003.txt",
+    "bigdata/DWD/Aachen_003/produkt_zehn_min_ff_20100101_20110331_00003.txt",
     header=0,
     sep=";",
 )
@@ -213,23 +213,23 @@ np.save("data/Pickles/Aachen/days.npy", days)
 
 # load data
 data1 = pd.read_table(
-    "data/DWD/Zugspitze_5792/produkt_zehn_min_ff_19940731_19991231_05792.txt",
+    "bigdata/DWD/Zugspitze_5792/produkt_zehn_min_ff_19940731_19991231_05792.txt",
     header=0,
     sep=";",
 )
 
 data2 = pd.read_table(
-    "data/DWD/Zugspitze_5792/produkt_zehn_min_ff_20000101_20091231_05792.txt",
+    "bigdata/DWD/Zugspitze_5792/produkt_zehn_min_ff_20000101_20091231_05792.txt",
     header=0,
     sep=";",
 )
 data3 = pd.read_table(
-    "data/DWD/Zugspitze_5792/produkt_zehn_min_ff_20100101_20191231_05792.txt",
+    "bigdata/DWD/Zugspitze_5792/produkt_zehn_min_ff_20100101_20191231_05792.txt",
     header=0,
     sep=";",
 )
 data4 = pd.read_table(
-    "data/DWD/Zugspitze_5792/produkt_zehn_min_ff_20200101_20221231_05792.txt",
+    "bigdata/DWD/Zugspitze_5792/produkt_zehn_min_ff_20200101_20221231_05792.txt",
     header=0,
     sep=";",
 )
@@ -259,23 +259,23 @@ np.save("data/Pickles/Zugspitze/days.npy", days)
 
 # load data
 data1 = pd.read_table(
-    "data/DWD/Boltenhagen/produkt_zehn_min_ff_19911107_19991231_00596.txt",
+    "bigdata/DWD/Boltenhagen/produkt_zehn_min_ff_19911107_19991231_00596.txt",
     header=0,
     sep=";",
 )
 
 data2 = pd.read_table(
-    "data/DWD/Boltenhagen/produkt_zehn_min_ff_20000101_20091231_00596.txt",
+    "bigdata/DWD/Boltenhagen/produkt_zehn_min_ff_20000101_20091231_00596.txt",
     header=0,
     sep=";",
 )
 data3 = pd.read_table(
-    "data/DWD/Boltenhagen/produkt_zehn_min_ff_20100101_20191231_00596.txt",
+    "bigdata/DWD/Boltenhagen/produkt_zehn_min_ff_20100101_20191231_00596.txt",
     header=0,
     sep=";",
 )
 data4 = pd.read_table(
-    "data/DWD/Boltenhagen/produkt_zehn_min_ff_20200101_20221231_00596.txt",
+    "bigdata/DWD/Boltenhagen/produkt_zehn_min_ff_20200101_20221231_00596.txt",
     header=0,
     sep=";",
 )
@@ -305,23 +305,23 @@ np.save("data/Pickles/Boltenhagen/days.npy", days)
 
 # load data
 data1 = pd.read_table(
-    "data/DWD/Fichtelberg/produkt_zehn_min_ff_19931216_19991231_01357.txt",
+    "bigdata/DWD/Fichtelberg/produkt_zehn_min_ff_19931216_19991231_01357.txt",
     header=0,
     sep=";",
 )
 
 data2 = pd.read_table(
-    "data/DWD/Fichtelberg/produkt_zehn_min_ff_20000101_20091231_01357.txt",
+    "bigdata/DWD/Fichtelberg/produkt_zehn_min_ff_20000101_20091231_01357.txt",
     header=0,
     sep=";",
 )
 data3 = pd.read_table(
-    "data/DWD/Fichtelberg/produkt_zehn_min_ff_20100101_20191231_01357.txt",
+    "bigdata/DWD/Fichtelberg/produkt_zehn_min_ff_20100101_20191231_01357.txt",
     header=0,
     sep=";",
 )
 data4 = pd.read_table(
-    "data/DWD/Fichtelberg/produkt_zehn_min_ff_20200101_20221231_01357.txt",
+    "bigdata/DWD/Fichtelberg/produkt_zehn_min_ff_20200101_20221231_01357.txt",
     header=0,
     sep=";",
 )
