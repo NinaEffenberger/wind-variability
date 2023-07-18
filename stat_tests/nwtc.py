@@ -1,8 +1,10 @@
 import numpy as np
 import pandas as pd
 from distributions import compute_instantenous_windspeeds
-from kolmogorov_smirnov import kolmogorov_smirnov_multi, plot_cumulative_densities_day
-from windspeed_averages_wp import compute_average_windspeeds, drop_nans, load_data, set_date
+from kolmogorov_smirnov import (kolmogorov_smirnov_multi,
+                                plot_cumulative_densities_day)
+from windspeed_averages_wp import (compute_average_windspeeds, drop_nans,
+                                   load_data, set_date)
 
 # load data
 average_daily = np.load("data/Pickles/NWTC/average_daily.npy")
@@ -24,17 +26,21 @@ kolmogorov_smirnov_multi(data, labels)
 
 """
  Kolmogorov-Smirnov Test ('daily', 'daily'): statistic=0.0000, p-value=1.0
- Kolmogorov-Smirnov Test ('daily', 'six hourly'): statistic=0.1122, p-value=8.678664786055666e-31
- Kolmogorov-Smirnov Test ('daily', 'three hourly'): statistic=0.1382, p-value=1.8637369014042177e-83
- Kolmogorov-Smirnov Test ('daily', '10min'): statistic=0.1851, p-value=0.0
- Kolmogorov-Smirnov Test ('six hourly', 'daily'): statistic=0.1122, p-value=8.678664786055666e-31
+ Kolmogorov-Smirnov Test ('daily', 'six hourly'): statistic=0.1159, p-value=8.154849868197042e-11
+ Kolmogorov-Smirnov Test ('daily', 'three hourly'): statistic=0.1419, p-value=9.12532189801082e-18
+ Kolmogorov-Smirnov Test ('daily', '10min'): statistic=0.1854, p-value=1.3483897346143757e-33
+ Kolmogorov-Smirnov Test ('six hourly', 'daily'): statistic=0.1159, p-value=8.154849868197042e-11
  Kolmogorov-Smirnov Test ('six hourly', 'six hourly'): statistic=0.0000, p-value=1.0
- Kolmogorov-Smirnov Test ('six hourly', 'three hourly'): statistic=0.0368, p-value=3.045310501607408e-08
- Kolmogorov-Smirnov Test ('six hourly', '10min'): statistic=0.0962, p-value=0.0
- Kolmogorov-Smirnov Test ('three hourly', 'daily'): statistic=0.1382, p-value=1.8637369014042177e-83
- Kolmogorov-Smirnov Test ('three hourly', 'six hourly'): statistic=0.0368, p-value=3.045310501607408e-08
+ Kolmogorov-Smirnov Test ('six hourly', 'three hourly'): statistic=0.0372, p-value=0.0005533927552870619
+ Kolmogorov-Smirnov Test ('six hourly', '10min'): statistic=0.0964, p-value=2.5106383484414674e-35
+ Kolmogorov-Smirnov Test ('three hourly', 'daily'): statistic=0.1419, p-value=9.12532189801082e-18
+ Kolmogorov-Smirnov Test ('three hourly', 'six hourly'): statistic=0.0372, p-value=0.0005533927552870619
  Kolmogorov-Smirnov Test ('three hourly', 'three hourly'): statistic=0.0000, p-value=1.0
- Kolmogorov-Smirnov Test ('three hourly', '10min'): statistic=0.0608, p-value=1.5322520788427077e-267
+ Kolmogorov-Smirnov Test ('three hourly', '10min'): statistic=0.0607, p-value=2.447801712288526e-27
+ Kolmogorov-Smirnov Test ('10min', 'daily'): statistic=0.1854, p-value=1.3483897346143757e-33
+ Kolmogorov-Smirnov Test ('10min', 'six hourly'): statistic=0.0964, p-value=2.5106383484414674e-35
+ Kolmogorov-Smirnov Test ('10min', 'three hourly'): statistic=0.0607, p-value=2.447801712288526e-27
+ Kolmogorov-Smirnov Test ('10min', '10min'): statistic=0.0000, p-value=1.0
 """
 # load data
 average_10min = np.load("data/Pickles/NWTC/average_10min.npy")
@@ -55,19 +61,20 @@ data = [
 kolmogorov_smirnov_multi(data, labels)
 
 """
- Kolmogorov-Smirnov Test ('daily', 'daily'): statistic=0.0000, p-value=1.0
- Kolmogorov-Smirnov Test ('daily', 'six hourly'): statistic=0.0363, p-value=0.001412988991145583
- Kolmogorov-Smirnov Test ('daily', 'three hourly'): statistic=0.0443, p-value=6.770467319791519e-09
- Kolmogorov-Smirnov Test ('daily', '10min'): statistic=0.0427, p-value=3.24684190086108e-126
- Kolmogorov-Smirnov Test ('six hourly', 'daily'): statistic=0.0363, p-value=0.001412988991145583
+Kolmogorov-Smirnov Test ('daily', 'daily'): statistic=0.0000, p-value=1.0
+ Kolmogorov-Smirnov Test ('daily', 'six hourly'): statistic=0.0374, p-value=0.16412746432009076
+ Kolmogorov-Smirnov Test ('daily', 'three hourly'): statistic=0.0446, p-value=0.038445458193930915
+ Kolmogorov-Smirnov Test ('daily', '10min'): statistic=0.0425, p-value=0.03605576774473984
+ Kolmogorov-Smirnov Test ('six hourly', 'daily'): statistic=0.0374, p-value=0.16412746432009076
  Kolmogorov-Smirnov Test ('six hourly', 'six hourly'): statistic=0.0000, p-value=1.0
- Kolmogorov-Smirnov Test ('six hourly', 'three hourly'): statistic=0.0127, p-value=0.23480751422830415
- Kolmogorov-Smirnov Test ('six hourly', '10min'): statistic=0.0114, p-value=1.4524366747311557e-09
- Kolmogorov-Smirnov Test ('three hourly', 'daily'): statistic=0.0443, p-value=6.770467319791519e-09
- Kolmogorov-Smirnov Test ('three hourly', 'six hourly'): statistic=0.0127, p-value=0.23480751422830415
+ Kolmogorov-Smirnov Test ('six hourly', 'three hourly'): statistic=0.0127, p-value=0.7218066811311489
+ Kolmogorov-Smirnov Test ('six hourly', '10min'): statistic=0.0114, p-value=0.6202395366905521
+ Kolmogorov-Smirnov Test ('three hourly', 'daily'): statistic=0.0446, p-value=0.038445458193930915
+ Kolmogorov-Smirnov Test ('three hourly', 'six hourly'): statistic=0.0127, p-value=0.7218066811311489
  Kolmogorov-Smirnov Test ('three hourly', 'three hourly'): statistic=0.0000, p-value=1.0
- Kolmogorov-Smirnov Test ('three hourly', '10min'): statistic=0.0061, p-value=0.003982009401393227
- Kolmogorov-Smirnov Test ('10min', 'daily'): statistic=0.0427, p-value=3.24684190086108e-126
- Kolmogorov-Smirnov Test ('10min', 'six hourly'): statistic=0.0114, p-value=1.4524366747311557e-09
- Kolmogorov-Smirnov Test ('10min', 'three hourly'): statistic=0.0061, p-value=0.003982009401393227
+ Kolmogorov-Smirnov Test ('three hourly', '10min'): statistic=0.0062, p-value=0.9011759344639219
+ Kolmogorov-Smirnov Test ('10min', 'daily'): statistic=0.0425, p-value=0.03605576774473984
+ Kolmogorov-Smirnov Test ('10min', 'six hourly'): statistic=0.0114, p-value=0.6202395366905521
+ Kolmogorov-Smirnov Test ('10min', 'three hourly'): statistic=0.0062, p-value=0.9011759344639219
+ Kolmogorov-Smirnov Test ('10min', '10min'): statistic=0.0000, p-value=1.0
 """
