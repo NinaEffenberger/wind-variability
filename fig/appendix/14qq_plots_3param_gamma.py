@@ -20,25 +20,19 @@ scales = np.load("data/gamma_params/3_param/scales_kelmarsh.npy")
 locs = np.load("data/gamma_params/3_param/locs_kelmarsh.npy")
 
 
-fig, ax = plt.subplots(8, 5, sharex=True, sharey=True, figsize=(8.27, 11.69), constrained_layout=True)
+fig, ax = plt.subplots(8, 4, sharex=True, sharey=True, figsize=(8.27, 11.69), constrained_layout=True)
 stats.probplot(average_10min, dist=gamma(a=cs[0], loc=locs[0], scale=scales[0]), plot=ax[0, 0])
-stats.probplot(
-    average_hourly,
-    dist=gamma(a=cs[1], loc=locs[1], scale=scales[1]),
-    plot=ax[0, 1],
-)
-
 stats.probplot(
     np.array(average_three_hourly).flatten(),
     dist=gamma(a=cs[2], loc=locs[2], scale=scales[2]),
-    plot=ax[0, 2],
+    plot=ax[0, 1],
 )
 stats.probplot(
     np.array(average_six_hourly).flatten(),
     dist=gamma(a=cs[3], loc=locs[3], scale=scales[3]),
-    plot=ax[0, 3],
+    plot=ax[0, 2],
 )
-stats.probplot(average_daily, dist=gamma(a=cs[4], loc=locs[4], scale=scales[4]), plot=ax[0, 4])
+stats.probplot(average_daily, dist=gamma(a=cs[4], loc=locs[4], scale=scales[4]), plot=ax[0, 3])
 
 # load data
 average_daily = np.load("data/Pickles/Penmanshiel/average_daily.npy")
@@ -54,22 +48,18 @@ scales = np.load("data/gamma_params/3_param/scales_penmanshiel.npy")
 locs = np.load("data/gamma_params/3_param/locs_penmanshiel.npy")
 
 stats.probplot(average_10min, dist=gamma(a=cs[0], loc=locs[0], scale=scales[0]), plot=ax[1, 0])
-stats.probplot(
-    average_hourly,
-    dist=gamma(a=cs[1], loc=locs[1], scale=scales[1]),
-    plot=ax[1, 1],
-)
+
 stats.probplot(
     np.array(average_three_hourly).flatten(),
     dist=gamma(a=cs[2], loc=locs[2], scale=scales[2]),
-    plot=ax[1, 2],
+    plot=ax[1, 1],
 )
 stats.probplot(
     np.array(average_six_hourly).flatten(),
     dist=gamma(a=cs[3], loc=locs[3], scale=scales[3]),
-    plot=ax[1, 3],
+    plot=ax[1, 2],
 )
-stats.probplot(average_daily, dist=gamma(a=cs[4], loc=locs[4], scale=scales[4]), plot=ax[1, 4])
+stats.probplot(average_daily, dist=gamma(a=cs[4], loc=locs[4], scale=scales[4]), plot=ax[1, 3])
 
 # load data
 average_daily = np.load("data/Pickles/NWTC/average_daily.npy")
@@ -85,21 +75,16 @@ locs = np.load("data/gamma_params/3_param/locs_nwtc5.npy")
 
 stats.probplot(average_10min, dist=gamma(a=cs[0], loc=locs[0], scale=scales[0]), plot=ax[2, 0])
 stats.probplot(
-    average_hourly,
-    dist=gamma(a=cs[1], loc=locs[1], scale=scales[1]),
-    plot=ax[2, 1],
-)
-stats.probplot(
     np.array(average_three_hourly).flatten(),
     dist=gamma(a=cs[2], loc=locs[2], scale=scales[2]),
-    plot=ax[2, 2],
+    plot=ax[2, 1],
 )
 stats.probplot(
     np.array(average_six_hourly).flatten(),
     dist=gamma(a=cs[3], loc=locs[3], scale=scales[3]),
-    plot=ax[2, 3],
+    plot=ax[2, 2],
 )
-stats.probplot(average_daily, dist=gamma(a=cs[4], loc=locs[4], scale=scales[4]), plot=ax[2, 4])
+stats.probplot(average_daily, dist=gamma(a=cs[4], loc=locs[4], scale=scales[4]), plot=ax[2, 3])
 
 # load data
 average_daily = np.load("data/Pickles/Owez/average_daily.npy")
@@ -114,22 +99,18 @@ scales = np.load("data/gamma_params/3_param/scales_owez.npy")
 locs = np.load("data/gamma_params/3_param/locs_owez.npy")
 
 stats.probplot(average_10min, dist=gamma(a=cs[0], loc=locs[0], scale=scales[0]), plot=ax[3, 0])
-stats.probplot(
-    average_hourly,
-    dist=gamma(a=cs[1], loc=locs[1], scale=scales[1]),
-    plot=ax[3, 1],
-)
+
 stats.probplot(
     np.array(average_three_hourly).flatten(),
     dist=gamma(a=cs[2], loc=locs[2], scale=scales[2]),
-    plot=ax[3, 2],
+    plot=ax[3, 1],
 )
 stats.probplot(
     np.array(average_six_hourly).flatten(),
     dist=gamma(a=cs[3], loc=locs[3], scale=scales[3]),
-    plot=ax[3, 3],
+    plot=ax[3, 2],
 )
-stats.probplot(average_daily, dist=gamma(a=cs[4], loc=locs[4], scale=scales[4]), plot=ax[3, 4])
+stats.probplot(average_daily, dist=gamma(a=cs[4], loc=locs[4], scale=scales[4]), plot=ax[3, 3])
 
 # load data
 average_daily = np.load("data/Pickles/Aachen/average_daily.npy")
@@ -145,21 +126,16 @@ locs = np.load("data/gamma_params/3_param/locs_aachen.npy")
 
 stats.probplot(average_10min, dist=gamma(a=cs[0], loc=locs[0], scale=scales[0]), plot=ax[4, 0])
 stats.probplot(
-    average_hourly,
-    dist=gamma(a=cs[1], loc=locs[1], scale=scales[1]),
-    plot=ax[4, 1],
-)
-stats.probplot(
     np.array(average_three_hourly).flatten(),
     dist=gamma(a=cs[2], loc=locs[2], scale=scales[2]),
-    plot=ax[4, 2],
+    plot=ax[4, 1],
 )
 stats.probplot(
     np.array(average_six_hourly).flatten(),
     dist=gamma(a=cs[3], loc=locs[3], scale=scales[3]),
-    plot=ax[4, 3],
+    plot=ax[4, 2],
 )
-stats.probplot(average_daily, dist=gamma(a=cs[4], loc=locs[4], scale=scales[4]), plot=ax[4, 4])
+stats.probplot(average_daily, dist=gamma(a=cs[4], loc=locs[4], scale=scales[4]), plot=ax[4, 3])
 
 # load data
 average_daily = np.load("data/Pickles/Zugspitze/average_daily.npy")
@@ -176,21 +152,16 @@ locs = np.load("data/gamma_params/3_param/locs_zugspitze.npy")
 
 stats.probplot(average_10min, dist=gamma(a=cs[0], loc=locs[0], scale=scales[0]), plot=ax[5, 0])
 stats.probplot(
-    average_hourly,
-    dist=gamma(a=cs[1], loc=locs[1], scale=scales[1]),
-    plot=ax[5, 1],
-)
-stats.probplot(
     np.array(average_three_hourly).flatten(),
     dist=gamma(a=cs[2], loc=locs[2], scale=scales[2]),
-    plot=ax[5, 2],
+    plot=ax[5, 1],
 )
 stats.probplot(
     np.array(average_six_hourly).flatten(),
     dist=gamma(a=cs[3], loc=locs[3], scale=scales[3]),
-    plot=ax[5, 3],
+    plot=ax[5, 2],
 )
-stats.probplot(average_daily, dist=gamma(a=cs[4], loc=locs[4], scale=scales[4]), plot=ax[5, 4])
+stats.probplot(average_daily, dist=gamma(a=cs[4], loc=locs[4], scale=scales[4]), plot=ax[5, 3])
 
 # load data
 average_daily = np.load("data/Pickles/Boltenhagen/average_daily.npy")
@@ -208,21 +179,16 @@ locs = np.load("data/gamma_params/3_param/locs_boltenhagen.npy")
 set = 6
 stats.probplot(average_10min, dist=gamma(a=cs[0], loc=locs[0], scale=scales[0]), plot=ax[set, 0])
 stats.probplot(
-    average_hourly,
-    dist=gamma(a=cs[1], loc=locs[1], scale=scales[1]),
-    plot=ax[set, 1],
-)
-stats.probplot(
     np.array(average_three_hourly).flatten(),
     dist=gamma(a=cs[2], loc=locs[2], scale=scales[2]),
-    plot=ax[set, 2],
+    plot=ax[set, 1],
 )
 stats.probplot(
     np.array(average_six_hourly).flatten(),
     dist=gamma(a=cs[3], loc=locs[3], scale=scales[3]),
-    plot=ax[set, 3],
+    plot=ax[set, 2],
 )
-stats.probplot(average_daily, dist=gamma(a=cs[4], loc=locs[4], scale=scales[4]), plot=ax[set, 4])
+stats.probplot(average_daily, dist=gamma(a=cs[4], loc=locs[4], scale=scales[4]), plot=ax[set, 3])
 
 # load data
 average_daily = np.load("data/Pickles/Fichtelberg/average_daily.npy")
@@ -239,26 +205,20 @@ locs = np.load("data/gamma_params/3_param/locs_fichtelberg.npy")
 set = 7
 stats.probplot(average_10min, dist=gamma(a=cs[0], loc=locs[0], scale=scales[0]), plot=ax[set, 0])
 stats.probplot(
-    average_hourly,
-    dist=gamma(a=cs[1], loc=locs[1], scale=scales[1]),
-    plot=ax[set, 1],
-)
-stats.probplot(
     np.array(average_three_hourly).flatten(),
     dist=gamma(a=cs[2], loc=locs[2], scale=scales[2]),
-    plot=ax[set, 2],
+    plot=ax[set, 1],
 )
 stats.probplot(
     np.array(average_six_hourly).flatten(),
     dist=gamma(a=cs[3], loc=locs[3], scale=scales[3]),
-    plot=ax[set, 3],
+    plot=ax[set, 2],
 )
-stats.probplot(average_daily, dist=gamma(a=cs[4], loc=locs[4], scale=scales[4]), plot=ax[set, 4])
+stats.probplot(average_daily, dist=gamma(a=cs[4], loc=locs[4], scale=scales[4]), plot=ax[set, 3])
 
-num = ["(1", "(2", "(3", "(4", "(5", "(6", "(7", "(8"]
-letter = ["a)", "b)", "c)", "d)", "e)"]
+letter = ["a", "b", "c", "d", "e", "f", "g", "h"]
 for i in range(8):
-    for j in range(5):
+    for j in range(4):
         ax[i, j].set_title("")
         ax[i, j].set_ylabel("")
         ax[i, j].set_xlabel("")
@@ -267,7 +227,11 @@ for i in range(8):
         ax[i, j].get_lines()[0].set_markersize(1.0)
         ax[i, j].get_lines()[1].set_linewidth(1.0)
         ax[i, j].get_lines()[1].set_color("#56B4E9")
-        ax[i, j].text(0.03, 0.9, num[i] + letter[j], transform=ax[i, j].transAxes)
+        ax[i, j].text(0.03, 0.9, "(" + letter[i] + ")", transform=ax[i, j].transAxes)
+
+cols = ["10min", "3h", "6h", "day"]
+for c, ax in zip(cols, ax[0]):
+    ax.set_title(c, size="large")
 
 fig.supxlabel(r"Weibull Quantiles")
 fig.supylabel(r"Empirical Quantiles")
