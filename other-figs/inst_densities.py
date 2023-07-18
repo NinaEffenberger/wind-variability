@@ -1,21 +1,8 @@
-import glob
-import os
-
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
-import xarray as xr
-from distributions import compute_instantenous_windspeeds
 from matplotlib.ticker import FormatStrFormatter
-from windspeed_averages_wp import (
-    compute_average_windspeeds,
-    drop_nans,
-    drop_nans_DWD,
-    load_data,
-    set_date,
-    set_date_DWD,
-)
 
 plt.rcParams["axes.prop_cycle"] = plt.cycler(
     color=["#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#CC79A7", "#D55E00"]

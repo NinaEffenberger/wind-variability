@@ -2,7 +2,6 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from windspeed_averages_wp import compute_average_windspeeds, drop_nans_DWD, set_date_DWD
 
 matplotlib.rcParams.update({"font.size": 12})
 

@@ -1,0 +1,14 @@
+# Install of `wind-variability`
+-e .
+
+#python>=3.9.16
+# To install cartopy check: https://scitools.org.uk/cartopy/docs/latest/installing.html, 
+# e.g. via conda install -c conda-forge cartopy
+matplotlib>=3.7.1
+numpy>=1.23.5
+pandas>=1.5.3
+scikit-learn==1.2.2 
+scipy==1.10.0
+seaborn==0.12.2
+windpowerlib==0.2.1
+xarray==2023.4.2

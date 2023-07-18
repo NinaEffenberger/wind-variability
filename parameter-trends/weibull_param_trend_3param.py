@@ -1,5 +1,5 @@
 import numpy as np
-from distributions import weibull_paramsdef
+from src.distributions import weibull_paramsdef
 
 # load data
 average_daily = np.load("data/Pickles/Kelmarsh/average_daily.npy")

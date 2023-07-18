@@ -1,8 +1,5 @@
-import matplotlib.pyplot as plt
-import numpy as np
-from tueplots import figsizes, fonts
-import tueplots
 import matplotlib
+import matplotlib.pyplot as plt
 
 matplotlib.rcParams.update({"font.size": 12})
 

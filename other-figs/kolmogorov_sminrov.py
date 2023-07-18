@@ -1,8 +1,7 @@
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
-import pandas as pd
-from kolmogorov_smirnov import kolmogorov_smirnov_plot, kolmogorov_smirnov_stat, prepare_dataframe
+from src.kolmogorov_smirnov import kolmogorov_smirnov_stat, prepare_dataframe
 
 matplotlib.rcParams.update({"font.size": 12})
 

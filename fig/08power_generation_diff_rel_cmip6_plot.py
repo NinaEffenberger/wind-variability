@@ -3,11 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import xarray as xr
-from windspeed_averages_wp import (
-    compute_windpower_generation_cmip,
-    drop_nans_DWD,
-    set_date_DWD,
-)
+from src.windspeed_averages_wp import compute_windpower_generation_cmip, drop_nans_DWD, set_date_DWD
 
 matplotlib.rcParams.update({"font.size": 12})
 
@@ -15,9 +11,7 @@ savepath = "plots_paper/plots/power_gen_diff_30yrs.svg"
 plt.rcParams["axes.prop_cycle"] = plt.cycler(
     color=["#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7"]
 )
-fig, ax = plt.subplots(
-    2, 4, sharex="col", figsize=(6, 4), constrained_layout=True, sharey=True
-)
+fig, ax = plt.subplots(2, 4, sharex="col", figsize=(6, 4), constrained_layout=True, sharey=True)
 
 data = "/Users/neffenberger/Downloads/uas_E3hr_MPI-ESM1-2-LR_historical_r1i1p1f1_gn_199001010130-200912312230.nc"
 data = xr.open_dataset(data)
@@ -28,13 +22,7 @@ time_series_three = np.load("data/cmip6/data/Kelmarsh/time_series_three.npy")
 time_series_three_pt = np.load("data/cmip6/data/Kelmarsh/time_series_three_pt.npy")
 time_series_six_pt = np.load("data/cmip6/data/Kelmarsh/time_series_six_pt.npy")
 
-(
-    power_day,
-    power_six_avrg,
-    power_three_avr,
-    power_six_pt,
-    power_three_pt,
-) = compute_windpower_generation_cmip(
+(power_day, power_six_avrg, power_three_avr, power_six_pt, power_three_pt,) = compute_windpower_generation_cmip(
     time_series_day,
     time_series_six,
     time_series_three,
@@ -80,13 +68,7 @@ time_series_three = np.load("data/cmip6/data/Penmanshiel/time_series_three.npy")
 time_series_three_pt = np.load("data/cmip6/data/Penmanshiel/time_series_three_pt.npy")
 time_series_six_pt = np.load("data/cmip6/data/Penmanshiel/time_series_six_pt.npy")
 
-(
-    power_day,
-    power_six_avrg,
-    power_three_avr,
-    power_six_pt,
-    power_three_pt,
-) = compute_windpower_generation_cmip(
+(power_day, power_six_avrg, power_three_avr, power_six_pt, power_three_pt,) = compute_windpower_generation_cmip(
     time_series_day,
     time_series_six,
     time_series_three,
@@ -130,13 +112,7 @@ time_series_three = np.load("data/cmip6/data/NWTC/time_series_three.npy")
 time_series_three_pt = np.load("data/cmip6/data/NWTC/time_series_three_pt.npy")
 time_series_six_pt = np.load("data/cmip6/data/NWTC/time_series_six_pt.npy")
 
-(
-    power_day,
-    power_six_avrg,
-    power_three_avr,
-    power_six_pt,
-    power_three_pt,
-) = compute_windpower_generation_cmip(
+(power_day, power_six_avrg, power_three_avr, power_six_pt, power_three_pt,) = compute_windpower_generation_cmip(
     time_series_day,
     time_series_six,
     time_series_three,
@@ -179,13 +155,7 @@ time_series_three = np.load("data/cmip6/data/Owez/time_series_three.npy")
 time_series_three_pt = np.load("data/cmip6/data/Owez/time_series_three_pt.npy")
 time_series_six_pt = np.load("data/cmip6/data/Owez/time_series_six_pt.npy")
 
-(
-    power_day,
-    power_six_avrg,
-    power_three_avr,
-    power_six_pt,
-    power_three_pt,
-) = compute_windpower_generation_cmip(
+(power_day, power_six_avrg, power_three_avr, power_six_pt, power_three_pt,) = compute_windpower_generation_cmip(
     time_series_day,
     time_series_six,
     time_series_three,
@@ -230,13 +200,7 @@ time_series_three = np.load("data/cmip6/data/Aachen/time_series_three.npy")
 time_series_three_pt = np.load("data/cmip6/data/Aachen/time_series_three_pt.npy")
 time_series_six_pt = np.load("data/cmip6/data/Aachen/time_series_six_pt.npy")
 
-(
-    power_day,
-    power_six_avrg,
-    power_three_avr,
-    power_six_pt,
-    power_three_pt,
-) = compute_windpower_generation_cmip(
+(power_day, power_six_avrg, power_three_avr, power_six_pt, power_three_pt,) = compute_windpower_generation_cmip(
     time_series_day,
     time_series_six,
     time_series_three,
@@ -285,13 +249,7 @@ time_series_three = np.load("data/cmip6/data/Zugspitze/time_series_three.npy")
 time_series_three_pt = np.load("data/cmip6/data/Zugspitze/time_series_three_pt.npy")
 time_series_six_pt = np.load("data/cmip6/data/Zugspitze/time_series_six_pt.npy")
 
-(
-    power_day,
-    power_six_avrg,
-    power_three_avr,
-    power_six_pt,
-    power_three_pt,
-) = compute_windpower_generation_cmip(
+(power_day, power_six_avrg, power_three_avr, power_six_pt, power_three_pt,) = compute_windpower_generation_cmip(
     time_series_day,
     time_series_six,
     time_series_three,
@@ -336,13 +294,7 @@ time_series_three = np.load("data/cmip6/data/Boltenhagen/time_series_three.npy")
 time_series_three_pt = np.load("data/cmip6/data/Boltenhagen/time_series_three_pt.npy")
 time_series_six_pt = np.load("data/cmip6/data/Boltenhagen/time_series_six_pt.npy")
 
-(
-    power_day,
-    power_six_avrg,
-    power_three_avr,
-    power_six_pt,
-    power_three_pt,
-) = compute_windpower_generation_cmip(
+(power_day, power_six_avrg, power_three_avr, power_six_pt, power_three_pt,) = compute_windpower_generation_cmip(
     time_series_day,
     time_series_six,
     time_series_three,
@@ -387,13 +339,7 @@ time_series_three = np.load("data/cmip6/data/Fichtelberg/time_series_three.npy")
 time_series_three_pt = np.load("data/cmip6/data/Fichtelberg/time_series_three_pt.npy")
 time_series_six_pt = np.load("data/cmip6/data/Fichtelberg/time_series_six_pt.npy")
 
-(
-    power_day,
-    power_six_avrg,
-    power_three_avr,
-    power_six_pt,
-    power_three_pt,
-) = compute_windpower_generation_cmip(
+(power_day, power_six_avrg, power_three_avr, power_six_pt, power_three_pt,) = compute_windpower_generation_cmip(
     time_series_day,
     time_series_six,
     time_series_three,

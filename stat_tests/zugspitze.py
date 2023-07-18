@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from kolmogorov_smirnov import kolmogorov_smirnov_multi
+from src.kolmogorov_smirnov import kolmogorov_smirnov_multi
 
 # load data
 average_daily = np.load("data/Pickles/Zugspitze/average_daily.npy")

@@ -1,10 +1,5 @@
-import glob
-import os
-
 import numpy as np
-import pandas as pd
-import xarray as xr
-from distributions import weibull_paramsdef_instanteous
+from src.distributions import weibull_paramsdef_instanteous
 
 # load data
 average_10min = np.load("data/Pickles/Kelmarsh/average_10min.npy")

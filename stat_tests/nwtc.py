@@ -1,10 +1,6 @@
 import numpy as np
 import pandas as pd
-from distributions import compute_instantenous_windspeeds
-from kolmogorov_smirnov import (kolmogorov_smirnov_multi,
-                                plot_cumulative_densities_day)
-from windspeed_averages_wp import (compute_average_windspeeds, drop_nans,
-                                   load_data, set_date)
+from src.kolmogorov_smirnov import kolmogorov_smirnov_multi
 
 # load data
 average_daily = np.load("data/Pickles/NWTC/average_daily.npy")

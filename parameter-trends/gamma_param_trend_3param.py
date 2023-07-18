@@ -1,5 +1,5 @@
 import numpy as np
-from distributions import gamma_paramsdef
+from src.distributions import gamma_paramsdef
 
 # load data
 average_daily = np.load("data/Pickles/Kelmarsh/average_daily.npy")

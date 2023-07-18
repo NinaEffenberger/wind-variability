@@ -1,28 +1,5 @@
-import glob
-import os
-
-import matplotlib.pyplot as plt
 import numpy as np
-import pandas as pd
-import xarray as xr
-from distributions import (
-    compute_instantenous_windspeeds,
-    plot_param_trend,
-    plot_param_trend_both,
-    plot_param_trend_instanteous,
-    plot_param_trend_precentage,
-    plot_param_trend_precentage_instanteous,
-    weibull_paramsdef,
-    weibull_paramsdef_instanteous,
-)
-from windspeed_averages_wp import (
-    compute_average_windspeeds,
-    drop_nans,
-    drop_nans_DWD,
-    load_data,
-    set_date,
-    set_date_DWD,
-)
+from src.distributions import weibull_paramsdef_instanteous
 
 # load data
 average_10min = np.load("data/Pickles/Aachen/first_three_years/average_10min.npy")
