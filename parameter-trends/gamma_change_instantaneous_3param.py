@@ -1,5 +1,6 @@
 import numpy as np
-from src.distributions import gamma_paramsdef_instanteous
+
+from distributions import gamma_paramsdef_instanteous
 
 # load data
 average_10min = np.load("data/Pickles/Kelmarsh/average_10min.npy")
