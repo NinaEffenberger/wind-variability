@@ -2,14 +2,15 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from matplotlib.legend import _get_legend_handles_labels
 
-matplotlib.rcParams.update({"font.size": 12})
+matplotlib.rcParams.update({"font.size": 13})
 
-savepath = "plots_eps/cum_dens_avrg_inst_4sites_diff.svg"
+savepath = "plots_eps/cum_dens_avrg_inst_4sites_diff.eps"
 plt.rcParams["axes.prop_cycle"] = plt.cycler(
     color=["#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7"]
 )
-fig, ax = plt.subplots(4, 2, sharex=True, sharey=True, figsize=(6, 6), layout="constrained")
+fig, ax = plt.subplots(4, 2, sharex=True, sharey=True, figsize=(6, 4.5), layout="constrained")
 
 # load data
 average_daily = np.load("data/Pickles/Kelmarsh/average_daily.npy")
@@ -51,7 +52,6 @@ data["dist8"] = data["dist5"] - data["dist3"]
 ax[0, 0].plot("windspeeds", "dist6", data=data, linewidth=1, label=label1)
 ax[0, 0].plot("windspeeds", "dist7", data=data, linewidth=1, label=label2)
 ax[0, 0].plot("windspeeds", "dist8", data=data, linewidth=1, label=label3)
-ax[0, 0].legend()
 
 labels = ["daily", "six hourly", "three hourly", "hourly", "10min"]
 data = [
@@ -76,9 +76,9 @@ data["dist5"] = data["windspeeds"].apply(lambda x: np.mean(dist5 <= x))
 data["dist6"] = data["dist5"] - data["dist1"]
 data["dist7"] = data["dist5"] - data["dist2"]
 data["dist8"] = data["dist5"] - data["dist3"]
-ax[0, 1].plot("windspeeds", "dist6", data=data, linewidth=1, label=label1)
-ax[0, 1].plot("windspeeds", "dist7", data=data, linewidth=1, label=label3)
-ax[0, 1].plot("windspeeds", "dist8", data=data, linewidth=1, label=label5)
+ax[0, 1].plot("windspeeds", "dist6", data=data, linewidth=1)
+ax[0, 1].plot("windspeeds", "dist7", data=data, linewidth=1)
+ax[0, 1].plot("windspeeds", "dist8", data=data, linewidth=1)
 
 # load data
 average_daily = np.load("data/Pickles/Penmanshiel/average_daily.npy")
@@ -115,9 +115,9 @@ data["dist5"] = data["windspeeds"].apply(lambda x: np.mean(dist5 <= x))
 data["dist6"] = data["dist5"] - data["dist1"]
 data["dist7"] = data["dist5"] - data["dist2"]
 data["dist8"] = data["dist5"] - data["dist3"]
-ax[1, 0].plot("windspeeds", "dist6", data=data, linewidth=1, label=label1)
-ax[1, 0].plot("windspeeds", "dist7", data=data, linewidth=1, label=label3)
-ax[1, 0].plot("windspeeds", "dist8", data=data, linewidth=1, label=label5)
+ax[1, 0].plot("windspeeds", "dist6", data=data, linewidth=1)
+ax[1, 0].plot("windspeeds", "dist7", data=data, linewidth=1)
+ax[1, 0].plot("windspeeds", "dist8", data=data, linewidth=1)
 
 labels = ["daily", "six hourly", "three hourly", "hourly", "10min"]
 data = [
@@ -142,9 +142,9 @@ data["dist5"] = data["windspeeds"].apply(lambda x: np.mean(dist5 <= x))
 data["dist6"] = data["dist5"] - data["dist1"]
 data["dist7"] = data["dist5"] - data["dist2"]
 data["dist8"] = data["dist5"] - data["dist3"]
-ax[1, 1].plot("windspeeds", "dist6", data=data, linewidth=1, label=label1)
-ax[1, 1].plot("windspeeds", "dist7", data=data, linewidth=1, label=label3)
-ax[1, 1].plot("windspeeds", "dist8", data=data, linewidth=1, label=label5)
+ax[1, 1].plot("windspeeds", "dist6", data=data, linewidth=1)
+ax[1, 1].plot("windspeeds", "dist7", data=data, linewidth=1)
+ax[1, 1].plot("windspeeds", "dist8", data=data, linewidth=1)
 
 # load data
 average_daily = np.load("data/Pickles/NWTC/average_daily.npy")
@@ -180,9 +180,9 @@ data["dist5"] = data["windspeeds"].apply(lambda x: np.mean(dist5 <= x))
 data["dist6"] = data["dist5"] - data["dist1"]
 data["dist7"] = data["dist5"] - data["dist2"]
 data["dist8"] = data["dist5"] - data["dist3"]
-ax[2, 0].plot("windspeeds", "dist6", data=data, linewidth=1, label=label1)
-ax[2, 0].plot("windspeeds", "dist7", data=data, linewidth=1, label=label3)
-ax[2, 0].plot("windspeeds", "dist8", data=data, linewidth=1, label=label5)
+ax[2, 0].plot("windspeeds", "dist6", data=data, linewidth=1)
+ax[2, 0].plot("windspeeds", "dist7", data=data, linewidth=1)
+ax[2, 0].plot("windspeeds", "dist8", data=data, linewidth=1)
 
 labels = ["daily", "six hourly", "three hourly", "hourly", "10min"]
 data = [
@@ -207,9 +207,9 @@ data["dist5"] = data["windspeeds"].apply(lambda x: np.mean(dist5 <= x))
 data["dist6"] = data["dist5"] - data["dist1"]
 data["dist7"] = data["dist5"] - data["dist2"]
 data["dist8"] = data["dist5"] - data["dist3"]
-ax[2, 1].plot("windspeeds", "dist6", data=data, linewidth=1, label=label1)
-ax[2, 1].plot("windspeeds", "dist7", data=data, linewidth=1, label=label3)
-ax[2, 1].plot("windspeeds", "dist8", data=data, linewidth=1, label=label5)
+ax[2, 1].plot("windspeeds", "dist6", data=data, linewidth=1)
+ax[2, 1].plot("windspeeds", "dist7", data=data, linewidth=1)
+ax[2, 1].plot("windspeeds", "dist8", data=data, linewidth=1)
 
 # load data
 average_daily = np.load("data/Pickles/Owez/average_daily.npy")
@@ -247,9 +247,9 @@ data["dist5"] = data["windspeeds"].apply(lambda x: np.mean(dist5 <= x))
 data["dist6"] = data["dist5"] - data["dist1"]
 data["dist7"] = data["dist5"] - data["dist2"]
 data["dist8"] = data["dist5"] - data["dist3"]
-ax[3, 0].plot("windspeeds", "dist6", data=data, linewidth=1, label=label1)
-ax[3, 0].plot("windspeeds", "dist7", data=data, linewidth=1, label=label3)
-ax[3, 0].plot("windspeeds", "dist8", data=data, linewidth=1, label=label5)
+ax[3, 0].plot("windspeeds", "dist6", data=data, linewidth=1)
+ax[3, 0].plot("windspeeds", "dist7", data=data, linewidth=1)
+ax[3, 0].plot("windspeeds", "dist8", data=data, linewidth=1)
 
 labels = ["daily", "six hourly", "three hourly", "hourly", "10min"]
 data = [
@@ -274,21 +274,20 @@ data["dist5"] = data["windspeeds"].apply(lambda x: np.mean(dist5 <= x))
 data["dist6"] = data["dist5"] - data["dist1"]
 data["dist7"] = data["dist5"] - data["dist2"]
 data["dist8"] = data["dist5"] - data["dist3"]
-ax[3, 1].plot("windspeeds", "dist6", data=data, linewidth=1, label=label1)
-ax[3, 1].plot("windspeeds", "dist7", data=data, linewidth=1, label=label3)
-ax[3, 1].plot("windspeeds", "dist8", data=data, linewidth=1, label=label5)
-
+ax[3, 1].plot("windspeeds", "dist6", data=data, linewidth=1)
+ax[3, 1].plot("windspeeds", "dist7", data=data, linewidth=1)
+ax[3, 1].plot("windspeeds", "dist8", data=data, linewidth=1)
 
 plt.xlim([0, 25])
 
-ax[0, 0].text(0.03, 0.85, "(a)", transform=ax[0, 0].transAxes)
-ax[1, 0].text(0.03, 0.85, "(b)", transform=ax[1, 0].transAxes)
-ax[2, 0].text(0.03, 0.85, "(c)", transform=ax[2, 0].transAxes)
-ax[3, 0].text(0.03, 0.85, "(d)", transform=ax[3, 0].transAxes)
-ax[0, 1].text(0.03, 0.85, "(a)", transform=ax[0, 1].transAxes)
-ax[1, 1].text(0.03, 0.85, "(b)", transform=ax[1, 1].transAxes)
-ax[2, 1].text(0.03, 0.85, "(c)", transform=ax[2, 1].transAxes)
-ax[3, 1].text(0.03, 0.85, "(d)", transform=ax[3, 1].transAxes)
+ax[0, 0].text(0.03, 0.8, "(a)", transform=ax[0, 0].transAxes)
+ax[1, 0].text(0.03, 0.8, "(b)", transform=ax[1, 0].transAxes)
+ax[2, 0].text(0.03, 0.8, "(c)", transform=ax[2, 0].transAxes)
+ax[3, 0].text(0.03, 0.8, "(d)", transform=ax[3, 0].transAxes)
+ax[0, 1].text(0.03, 0.8, "(a)", transform=ax[0, 1].transAxes)
+ax[1, 1].text(0.03, 0.8, "(b)", transform=ax[1, 1].transAxes)
+ax[2, 1].text(0.03, 0.8, "(c)", transform=ax[2, 1].transAxes)
+ax[3, 1].text(0.03, 0.8, "(d)", transform=ax[3, 1].transAxes)
 
 custom_ylim = (-0.1, 0.3)
 plt.setp(ax, ylim=custom_ylim)
@@ -296,5 +295,9 @@ plt.setp(ax, ylim=custom_ylim)
 # Setting the values for all axes.
 fig.supxlabel(r"Wind speed ($\frac{m}{s}$)")
 fig.supylabel(r"Cumulative density")
+fig.legend(*ax[0, 0].get_legend_handles_labels(), loc="outside right center")
+cols = ["average", "instantaneous"]
+for c, ax in zip(cols, ax[0]):
+    ax.set_title(c, size="large")
 plt.savefig(savepath)
 plt.show()

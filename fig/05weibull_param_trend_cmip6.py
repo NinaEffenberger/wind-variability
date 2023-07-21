@@ -1,3 +1,4 @@
+import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -5,17 +6,14 @@ import seaborn as sns
 from matplotlib.ticker import FormatStrFormatter
 from scipy import stats
 from scipy.stats import weibull_min
-import matplotlib
 
-matplotlib.rcParams.update({"font.size": 12})
+matplotlib.rcParams.update({"font.size": 13})
 
 plt.rcParams["axes.prop_cycle"] = plt.cycler(
     color=["#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7"]
 )
 
-fig, ax = plt.subplots(
-    2, 4, sharex=True, sharey=True, figsize=(6, 4), constrained_layout=True
-)
+fig, ax = plt.subplots(2, 4, sharex=True, sharey=True, figsize=(6, 4.5), constrained_layout=True)
 time_series_day = np.load("data/cmip6/data/Aachen/time_series_day.npy")
 time_series_six = np.load("data/cmip6/data/Aachen/time_series_six.npy")
 time_series_three = np.load("data/cmip6/data/Aachen/time_series_three.npy")
@@ -47,6 +45,7 @@ ax[1, 0].plot(scales_avrg)
 ax[1, 0].plot(locs_avrg)
 ax[1, 0].set_xticks([0, 1, 2])
 ax[1, 0].set_xticklabels(["3h", "6h", "day"])
+plt.setp(ax[1, 0].get_xticklabels(), rotation=90, ha="center")
 
 time_series_day = np.load("data/cmip6/data/Zugspitze/time_series_day.npy")
 time_series_six = np.load("data/cmip6/data/Zugspitze/time_series_six.npy")
@@ -79,6 +78,7 @@ ax[1, 1].plot(scales_avrg)
 ax[1, 1].plot(locs_avrg)
 ax[1, 1].set_xticks([0, 1, 2])
 ax[1, 1].set_xticklabels(["3h", "6h", "day"])
+plt.setp(ax[1, 1].get_xticklabels(), rotation=90, ha="center")
 
 time_series_day = np.load("data/cmip6/data/Boltenhagen/time_series_day.npy")
 time_series_six = np.load("data/cmip6/data/Boltenhagen/time_series_six.npy")
@@ -111,6 +111,7 @@ ax[1, 2].plot(scales_avrg)
 ax[1, 2].plot(locs_avrg)
 ax[1, 2].set_xticks([0, 1, 2])
 ax[1, 2].set_xticklabels(["3h", "6h", "day"])
+plt.setp(ax[1, 2].get_xticklabels(), rotation=90, ha="center")
 
 time_series_day = np.load("data/cmip6/data/Fichtelberg/time_series_day.npy")
 time_series_six = np.load("data/cmip6/data/Fichtelberg/time_series_six.npy")
@@ -143,6 +144,7 @@ ax[1, 3].plot(scales_avrg)
 ax[1, 3].plot(locs_avrg)
 ax[1, 3].set_xticks([0, 1, 2])
 ax[1, 3].set_xticklabels(["3h", "6h", "day"])
+plt.setp(ax[1, 3].get_xticklabels(), rotation=90, ha="center")
 
 time_series_day = np.load("data/cmip6/data/Penmanshiel/time_series_day.npy")
 time_series_six = np.load("data/cmip6/data/Penmanshiel/time_series_six.npy")
@@ -175,6 +177,7 @@ ax[0, 1].plot(scales_avrg)
 ax[0, 1].plot(locs_avrg)
 ax[0, 1].set_xticks([0, 1, 2])
 ax[0, 1].set_xticklabels(["3h", "6h", "day"])
+plt.setp(ax[0, 1].get_xticklabels(), rotation=90, ha="center")
 
 time_series_day = np.load("data/cmip6/data/Kelmarsh/time_series_day.npy")
 time_series_six = np.load("data/cmip6/data/Kelmarsh/time_series_six.npy")
@@ -207,6 +210,7 @@ ax[0, 0].plot(scales_avrg, label=r"$\lambda$")
 ax[0, 0].plot(locs_avrg, label=r"$\theta$")
 ax[0, 0].set_xticks([0, 1, 2])
 ax[0, 0].set_xticklabels(["3h", "6h", "day"])
+plt.setp(ax[0, 0].get_xticklabels(), rotation=90, ha="center")
 
 time_series_day = np.load("data/cmip6/data/NWTC/time_series_day.npy")
 time_series_six = np.load("data/cmip6/data/NWTC/time_series_six.npy")
@@ -239,6 +243,7 @@ ax[0, 2].plot(scales_avrg)
 ax[0, 2].plot(locs_avrg)
 ax[0, 2].set_xticks([0, 1, 2])
 ax[0, 2].set_xticklabels(["3h", "6h", "day"])
+plt.setp(ax[0, 2].get_xticklabels(), rotation=90, ha="center")
 
 time_series_day = np.load("data/cmip6/data/Owez/time_series_day.npy")
 time_series_six = np.load("data/cmip6/data/Owez/time_series_six.npy")
@@ -272,6 +277,7 @@ ax[0, 3].plot(scales_avrg)
 ax[0, 3].plot(locs_avrg)
 ax[0, 3].set_xticks([0, 1, 2])
 ax[0, 3].set_xticklabels(["3h", "6h", "day"])
+plt.setp(ax[0, 3].get_xticklabels(), rotation=90, ha="center")
 
 plt.rcParams["axes.prop_cycle"] = plt.cycler(
     color=["#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7"]
@@ -286,6 +292,7 @@ ax[0, 0].plot(scales[2:-1], color="#56B4E9", linestyle="dashed")
 ax[0, 0].plot(locs[2:-1], color="#009E73", linestyle="dashed")
 ax[0, 0].set_xticks([0, 1, 2])
 ax[0, 0].set_xticklabels(["3h", "6h", "day"])
+plt.setp(ax[0, 0].get_xticklabels(), rotation=90, ha="center")
 
 cs = np.load("data/weibull_params/3_param/cs_penmanshiel.npy")
 scales = np.load("data/weibull_params/3_param/scales_penmanshiel.npy")
@@ -296,6 +303,7 @@ ax[0, 1].plot(scales[2:-1], color="#56B4E9", linestyle="dashed")
 ax[0, 1].plot(locs[2:-1], color="#009E73", linestyle="dashed")
 ax[0, 1].set_xticks([0, 1, 2])
 ax[0, 1].set_xticklabels(["3h", "6h", "day"])
+plt.setp(ax[0, 1].get_xticklabels(), rotation=90, ha="center")
 
 cs = np.load("data/weibull_params/3_param/cs_nwtc5.npy")
 scales = np.load("data/weibull_params/3_param/scales_nwtc5.npy")
@@ -306,6 +314,7 @@ ax[0, 2].plot(scales[2:-1], color="#56B4E9", linestyle="dashed")
 ax[0, 2].plot(locs[2:-1], color="#009E73", linestyle="dashed")
 ax[0, 2].set_xticks([0, 1, 2])
 ax[0, 2].set_xticklabels(["3h", "6h", "day"])
+plt.setp(ax[0, 2].get_xticklabels(), rotation=90, ha="center")
 
 cs = np.load("data/weibull_params/3_param/cs_owez.npy")
 scales = np.load("data/weibull_params/3_param/scales_owez.npy")
@@ -316,6 +325,7 @@ ax[0, 3].plot(scales[2:-1], color="#56B4E9", linestyle="dashed")
 ax[0, 3].plot(locs[2:-1], color="#009E73", linestyle="dashed")
 ax[0, 3].set_xticks([0, 1, 2])
 ax[0, 3].set_xticklabels(["3h", "6h", "day"])
+plt.setp(ax[0, 3].get_xticklabels(), rotation=90, ha="center")
 
 
 cs = np.load("data/weibull_params/3_param/cs_aachen.npy")
@@ -327,6 +337,7 @@ ax[1, 0].plot(scales[2:-1], color="#56B4E9", linestyle="dashed")
 ax[1, 0].plot(locs[2:-1], color="#009E73", linestyle="dashed")
 ax[1, 0].set_xticks([0, 1, 2])
 ax[1, 0].set_xticklabels(["3h", "6h", "day"])
+plt.setp(ax[1, 0].get_xticklabels(), rotation=90, ha="center")
 
 cs = np.load("data/weibull_params/3_param/cs_zugspitze.npy")
 scales = np.load("data/weibull_params/3_param/scales_zugspitze.npy")
@@ -337,6 +348,7 @@ ax[1, 1].plot(scales[2:-1], color="#56B4E9", linestyle="dashed")
 ax[1, 1].plot(locs[2:-1], color="#009E73", linestyle="dashed")
 ax[1, 1].set_xticks([0, 1, 2])
 ax[1, 1].set_xticklabels(["3h", "6h", "day"])
+plt.setp(ax[1, 1].get_xticklabels(), rotation=90, ha="center")
 
 cs = np.load("data/weibull_params/3_param/cs_boltenhagen.npy")
 scales = np.load("data/weibull_params/3_param/scales_boltenhagen.npy")
@@ -347,6 +359,7 @@ ax[1, 2].plot(scales[2:-1], color="#56B4E9", linestyle="dashed")
 ax[1, 2].plot(locs[2:-1], color="#009E73", linestyle="dashed")
 ax[1, 2].set_xticks([0, 1, 2])
 ax[1, 2].set_xticklabels(["3h", "6h", "day"])
+plt.setp(ax[1, 2].get_xticklabels(), rotation=90, ha="center")
 
 cs = np.load("data/weibull_params/3_param/cs_fichtelberg.npy")
 scales = np.load("data/weibull_params/3_param/scales_fichtelberg.npy")
@@ -357,6 +370,8 @@ ax[1, 3].plot(scales[2:-1], color="#56B4E9", linestyle="dashed")
 ax[1, 3].plot(locs[2:-1], color="#009E73", linestyle="dashed")
 ax[1, 3].set_xticks([0, 1, 2])
 ax[1, 3].set_xticklabels(["3h", "6h", "day"])
+plt.setp(ax[1, 3].get_xticklabels(), rotation=90, ha="center")
+
 fig.supxlabel(r"Resolution")
 fig.supylabel(r"Parameter value")
 
@@ -372,13 +387,13 @@ ax[1, 1].yaxis.set_major_formatter(FormatStrFormatter("%.0f"))
 ax[1, 2].yaxis.set_major_formatter(FormatStrFormatter("%.0f"))
 ax[1, 3].yaxis.set_major_formatter(FormatStrFormatter("%.0f"))
 
-ax[0, 0].text(0.03, 0.9, "1)", transform=ax[0, 0].transAxes)
-ax[0, 1].text(0.03, 0.9, "2)", transform=ax[0, 1].transAxes)
-ax[0, 2].text(0.03, 0.9, "3)", transform=ax[0, 2].transAxes)
-ax[0, 3].text(0.03, 0.9, "4)", transform=ax[0, 3].transAxes)
-ax[1, 0].text(0.03, 0.9, "5)", transform=ax[1, 0].transAxes)
-ax[1, 1].text(0.03, 0.9, "6)", transform=ax[1, 1].transAxes)
-ax[1, 2].text(0.03, 0.9, "7)", transform=ax[1, 2].transAxes)
-ax[1, 3].text(0.03, 0.9, "8)", transform=ax[1, 3].transAxes)
+ax[0, 0].text(0.03, 0.9, "(a)", transform=ax[0, 0].transAxes)
+ax[0, 1].text(0.03, 0.9, "(b)", transform=ax[0, 1].transAxes)
+ax[0, 2].text(0.03, 0.9, "(c)", transform=ax[0, 2].transAxes)
+ax[0, 3].text(0.03, 0.9, "(d)", transform=ax[0, 3].transAxes)
+ax[1, 0].text(0.03, 0.9, "(e)", transform=ax[1, 0].transAxes)
+ax[1, 1].text(0.03, 0.9, "(f)", transform=ax[1, 1].transAxes)
+ax[1, 2].text(0.03, 0.9, "(g)", transform=ax[1, 2].transAxes)
+ax[1, 3].text(0.03, 0.9, "(h)", transform=ax[1, 3].transAxes)
 fig.legend(loc="outside right center")
 plt.savefig("plots_eps/weibull_cmip6.eps")

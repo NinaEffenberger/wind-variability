@@ -1,7 +1,7 @@
 import matplotlib
 import matplotlib.pyplot as plt
 
-matplotlib.rcParams.update({"font.size": 12})
+matplotlib.rcParams.update({"font.size": 13})
 
 fig, ax = plt.subplots(1, 1, constrained_layout=True, figsize=(6, 4.5))
 
@@ -42,7 +42,7 @@ ax.plot(variances_owez_avrg, label="Owez", color="#F0E442")
 ax.plot(variances_owez_inst, color="#F0E442", linestyle="dashed")
 ax.set_xticks([0, 1, 2, 3])
 ax.set_xticklabels(["10min", "3h", "6h", "day"])
-ax.set_xlabel(r"Resolution")
-ax.set_ylabel(r"Variance ($\frac{m}{s}$)")
+ax.set_xlabel(r"Resolution", fontsize=16)
+ax.set_ylabel(r"Variance ($\frac{m}{s}$)", fontsize=16)
 fig.legend(loc="outside right center")
 plt.savefig("plots_eps/variances.eps")

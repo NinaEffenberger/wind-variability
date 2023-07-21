@@ -4,9 +4,7 @@ import pandas as pd
 import seaborn as sns
 from matplotlib.ticker import FormatStrFormatter
 
-plt.rcParams["axes.prop_cycle"] = plt.cycler(
-    color=["#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#CC79A7", "#D55E00"]
-)
+plt.rcParams["axes.prop_cycle"] = plt.cycler(color=["#E69F00", "#56B4E9", "#009E73", "#CC79A7", "#D55E00"])
 fig, ax = plt.subplots(2, 2, sharex=True, figsize=(4.4, 4), constrained_layout=True)
 
 
@@ -23,7 +21,6 @@ w = pd.Series(day)
 t = pd.Series(hour)
 r = pd.Series(average_10min)
 sns.kdeplot(ax=ax[0, 0], data=r, label="10min", linewidth=1)
-sns.kdeplot(ax=ax[0, 0], data=t, label="1h", linewidth=1)
 sns.kdeplot(ax=ax[0, 0], data=u, label="3h", linewidth=1)
 sns.kdeplot(ax=ax[0, 0], data=p, label="6h", linewidth=1)
 sns.kdeplot(ax=ax[0, 0], data=w, label="day", linewidth=1)
@@ -42,7 +39,6 @@ w = pd.Series(day)
 t = pd.Series(hour)
 r = pd.Series(average_10min)
 sns.kdeplot(ax=ax[0, 1], data=r, linewidth=1)
-sns.kdeplot(ax=ax[0, 1], data=t, linewidth=1)
 sns.kdeplot(ax=ax[0, 1], data=u, linewidth=1)
 sns.kdeplot(ax=ax[0, 1], data=p, linewidth=1)
 sns.kdeplot(ax=ax[0, 1], data=w, linewidth=1)
@@ -61,7 +57,6 @@ w = pd.Series(day)
 t = pd.Series(hour)
 r = pd.Series(average_10min)
 sns.kdeplot(ax=ax[1, 0], data=r, linewidth=1)
-sns.kdeplot(ax=ax[1, 0], data=t, linewidth=1)
 sns.kdeplot(ax=ax[1, 0], data=u, linewidth=1)
 sns.kdeplot(ax=ax[1, 0], data=p, linewidth=1)
 sns.kdeplot(ax=ax[1, 0], data=w, linewidth=1)
@@ -79,7 +74,6 @@ w = pd.Series(day)
 t = pd.Series(hour)
 r = pd.Series(average_10min)
 sns.kdeplot(ax=ax[1, 1], data=r, linewidth=1)
-sns.kdeplot(ax=ax[1, 1], data=t, linewidth=1)
 sns.kdeplot(ax=ax[1, 1], data=u, linewidth=1)
 sns.kdeplot(ax=ax[1, 1], data=p, linewidth=1)
 sns.kdeplot(ax=ax[1, 1], data=w, linewidth=1)
@@ -87,10 +81,10 @@ sns.kdeplot(ax=ax[1, 1], data=w, linewidth=1)
 
 plt.xlim([-2, 25])
 
-ax[0, 0].text(0.03, 0.9, "1)", transform=ax[0, 0].transAxes)
-ax[0, 1].text(0.03, 0.9, "2)", transform=ax[0, 1].transAxes)
-ax[1, 0].text(0.03, 0.9, "3)", transform=ax[1, 0].transAxes)
-ax[1, 1].text(0.03, 0.9, "4)", transform=ax[1, 1].transAxes)
+ax[0, 0].text(0.03, 0.9, "(a)", transform=ax[0, 0].transAxes)
+ax[0, 1].text(0.03, 0.9, "(b)", transform=ax[0, 1].transAxes)
+ax[1, 0].text(0.03, 0.9, "(c)", transform=ax[1, 0].transAxes)
+ax[1, 1].text(0.03, 0.9, "(d)", transform=ax[1, 1].transAxes)
 
 ax[0, 0].set(xlabel=None, ylabel=None)
 ax[0, 1].set(xlabel=None, ylabel=None)

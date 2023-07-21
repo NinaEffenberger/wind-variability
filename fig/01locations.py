@@ -7,7 +7,7 @@ import matplotlib.ticker as mticker
 from cartopy.mpl.gridliner import LATITUDE_FORMATTER, LONGITUDE_FORMATTER
 from matplotlib.lines import Line2D
 
-matplotlib.rcParams.update({"font.size": 12})
+matplotlib.rcParams.update({"font.size": 13})
 
 plt.rcParams["axes.prop_cycle"] = plt.cycler(
     color=["#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7"]
@@ -46,9 +46,7 @@ plt.plot(
     markersize=5,
 )
 plt.plot([m5_lon], [m5_lat], marker="^", label="M5", color="#009E73", markersize=5)
-plt.plot(
-    [owez_lon], [owez_lat], marker="s", label="Owez", color="#F0E442", markersize=4
-)
+plt.plot([owez_lon], [owez_lat], marker="s", label="Owez", color="#F0E442", markersize=4)
 # plt.plot([boseong_lon], [boseong_lat], marker="p", label="Boseong", color="darkred", markersize=8)
 
 # plt.legend()
@@ -114,7 +112,7 @@ gl.xformatter = LONGITUDE_FORMATTER
 gl.yformatter = LATITUDE_FORMATTER
 gl.xlabel_style = {"size": 15, "color": "gray"}
 gl.xlabel_style = {"color": "black", "weight": "bold"}
-plt.savefig("plots_eps/locations.eps")
+plt.savefig("plots_eps/locations.svg")
 
 # Aachen
 lon_aachen = 6.0941
@@ -327,5 +325,5 @@ gl.xformatter = LONGITUDE_FORMATTER
 gl.yformatter = LATITUDE_FORMATTER
 gl.xlabel_style = {"size": 15, "color": "gray"}
 gl.xlabel_style = {"color": "black", "weight": "bold"}
-plt.savefig("plots_eps/locations_DWD.eps")
+plt.savefig("plots_eps/locations_DWD.svg")
 plt.show()

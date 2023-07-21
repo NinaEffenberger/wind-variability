@@ -25,6 +25,7 @@ ax[0, 0].set_xticks([0, 144 * 10, 144 * 20])
 ax[0, 1].set_xticks([0, 8 * 10, 8 * 20])
 ax[1, 0].set_xticks([0, 4 * 10, 4 * 20])
 ax[1, 1].set_xticks([0, 10, 20])
+fig.supylabel(r"Wind speed ($\frac{m}{s}$)")
 
 plt.savefig("temporal_downscaling2.svg")
 plt.show()

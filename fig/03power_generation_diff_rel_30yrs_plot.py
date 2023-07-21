@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-matplotlib.rcParams.update({"font.size": 12})
+matplotlib.rcParams.update({"font.size": 13})
 
 savepath = "plots_eps/power_gen_diff_30yrs.eps"
 plt.rcParams["axes.prop_cycle"] = plt.cycler(
@@ -16,7 +16,7 @@ daily_winds = np.load("data/power-gen/Aachen/daily_avrg.npy")
 ten_min_winds = np.load("data/power-gen/Aachen/ten_min.npy")
 days = np.load("data/power-gen/Aachen/days.npy", allow_pickle=True)
 
-fig, ax = plt.subplots(2, 4, sharex="col", figsize=(6, 4), sharey=True, constrained_layout=True)
+fig, ax = plt.subplots(2, 4, sharex="col", figsize=(6, 4.5), sharey=True, constrained_layout=True)
 print(((np.cumsum(daily_winds)) / np.cumsum(ten_min_winds)[-1])[-1])
 print(((np.cumsum(three_hourly_winds)) / np.cumsum(ten_min_winds)[-1])[-1])
 print(((np.cumsum(six_hourly_winds)) / np.cumsum(ten_min_winds)[-1])[-1])
@@ -378,14 +378,14 @@ plt.setp(ax[1, 3].get_xticklabels(), rotation=90, ha="center")
 custom_ylim = (0, 1.3)
 plt.setp(ax, ylim=custom_ylim)
 
-ax[0, 0].text(0.03, 0.9, "5a)", transform=ax[0, 0].transAxes)
-ax[0, 1].text(0.03, 0.9, "6a)", transform=ax[0, 1].transAxes)
-ax[0, 2].text(0.03, 0.9, "7a)", transform=ax[0, 2].transAxes)
-ax[0, 3].text(0.03, 0.9, "8a)", transform=ax[0, 3].transAxes)
-ax[1, 0].text(0.03, 0.9, "5b)", transform=ax[1, 0].transAxes)
-ax[1, 1].text(0.03, 0.9, "6b)", transform=ax[1, 1].transAxes)
-ax[1, 2].text(0.03, 0.9, "7b)", transform=ax[1, 2].transAxes)
-ax[1, 3].text(0.03, 0.9, "8b)", transform=ax[1, 3].transAxes)
+ax[0, 0].text(0.03, 0.9, "(e)", transform=ax[0, 0].transAxes)
+ax[0, 1].text(0.03, 0.9, "(f)", transform=ax[0, 1].transAxes)
+ax[0, 2].text(0.03, 0.9, "(g)", transform=ax[0, 2].transAxes)
+ax[0, 3].text(0.03, 0.9, "(h)", transform=ax[0, 3].transAxes)
+ax[1, 0].text(0.03, 0.9, "(e)", transform=ax[1, 0].transAxes)
+ax[1, 1].text(0.03, 0.9, "(f)", transform=ax[1, 1].transAxes)
+ax[1, 2].text(0.03, 0.9, "(g)", transform=ax[1, 2].transAxes)
+ax[1, 3].text(0.03, 0.9, "(h)", transform=ax[1, 3].transAxes)
 
 fig.legend(loc="outside right center")
 fig.supxlabel("Time (years)")
