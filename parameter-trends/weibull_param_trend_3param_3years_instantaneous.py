@@ -1,5 +1,5 @@
 import numpy as np
-from src.distributions import weibull_paramsdef_instanteous
+from distributions import weibull_paramsdef_instanteous
 
 # load data
 average_10min = np.load("data/Pickles/Aachen/first_three_years/average_10min.npy")

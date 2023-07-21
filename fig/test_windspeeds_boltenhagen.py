@@ -2,8 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
-from distributions import compute_instantenous_windspeeds
-from src.windspeed_averages_wp import compute_windpower_generation, compute_windpower_generation_instantaneous
+from src.windspeed_averages_wp import compute_windpower_generation
 from windspeed_averages_wp import compute_average_windspeeds, drop_nans_DWD, set_date_DWD
 
 # load data

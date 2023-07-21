@@ -1,3 +1,6 @@
+"""
+Kolmogorov-Smirnov tests for Boltenhagen DWD data.
+"""
 import numpy as np
 import pandas as pd
 from kolmogorov_smirnov import kolmogorov_smirnov_multi

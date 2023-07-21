@@ -1,6 +1,5 @@
 import cartopy
 import cartopy.crs as ccrs
-import cartopy.feature as cf
 import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker

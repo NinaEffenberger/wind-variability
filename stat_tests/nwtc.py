@@ -1,3 +1,6 @@
+"""
+Kolmogorov-Smirnov tests for NWTC high met mast data.
+"""
 import numpy as np
 import pandas as pd
 from src.kolmogorov_smirnov import kolmogorov_smirnov_multi

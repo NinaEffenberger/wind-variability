@@ -1,6 +1,8 @@
+"""
+Kolmogorov-Smirnov tests for CMIP6 data.
+"""
 import numpy as np
 from kolmogorov_smirnov import kolmogorov_smirnov_multi
-
 
 time_series_day = np.load("data/cmip6/data/Aachen/time_series_day.npy")
 time_series_six = np.load("data/cmip6/data/Aachen/time_series_six.npy")

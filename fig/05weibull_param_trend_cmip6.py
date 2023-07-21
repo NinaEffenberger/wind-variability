@@ -1,11 +1,8 @@
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
-import pandas as pd
-import seaborn as sns
 from matplotlib.ticker import FormatStrFormatter
 from scipy import stats
-from scipy.stats import weibull_min
 
 matplotlib.rcParams.update({"font.size": 13})
 
