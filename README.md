@@ -5,7 +5,7 @@ Code for the Paper "insert name"
 All data subsets used are stored in `data`. To re-run the full experiments, download the raw data files as described below, add them to the folder `bigdata` and run the code in `pre-process`.
 
 ### Raw Data 
-Wind speed data is from turbine 1 of the [Kelmarsh wind farm](https://zenodo.org/record/5841834), turbine 11 of the [Penmanshield wind farm](https://zenodo.org/record/5946808), the [Owez high tower](https://talltowers.bsc.es/node/4856) and the [NWTC M5 high tower](https://talltowers.bsc.es/node/4846) and from the [Deutsche Wetterdienst](https://opendata.dwd.de/climate_environment/CDC/).
+Wind speed data is from turbine 1 of the [Kelmarsh wind farm](https://zenodo.org/record/5841834), turbine 11 of the [Penmanshield wind farm](https://zenodo.org/record/5946808), the [Owez high tower](https://talltowers.bsc.es/node/4856) and the [NWTC M5 high tower](https://talltowers.bsc.es/node/4846) and from the [Deutsche Wetterdienst](https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/10_minutes/wind/historical/).
 
 CMIP6 data is from the model MPI-ESM1-2-LR and can be downloaded through the [ESGF node](https://esgf-node.llnl.gov/search/cmip6/).
 
