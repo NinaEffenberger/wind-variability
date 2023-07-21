@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import xarray as xr
-from src.windspeed_averages_wp import compute_windpower_generation_cmip, drop_nans_DWD, set_date_DWD
+from windspeed_averages_wp import compute_windpower_generation_cmip, drop_nans_DWD, set_date_DWD
 
 matplotlib.rcParams.update({"font.size": 12})
 

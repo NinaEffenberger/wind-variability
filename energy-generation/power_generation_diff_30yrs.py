@@ -1,5 +1,7 @@
 import numpy as np
-from src.windspeed_averages_wp import compute_windpower_generation, compute_windpower_generation_instantaneous
+
+from windspeed_averages_wp import (compute_windpower_generation,
+                                   compute_windpower_generation_instantaneous)
 
 # load data
 average_daily = np.load("data/Pickles/Aachen/average_daily.npy")
