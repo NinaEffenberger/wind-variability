@@ -62,8 +62,8 @@ ax[1, 0].set_xticklabels(["10min", "3h", "6h", "day"])
 custom_ylim = (-1, 15)
 
 ax[0, 0].text(0, 13.5, "(a)")
-ax[1, 0].text(0, 13.5, "(a)")
-ax[0, 1].text(0, 13.5, "(b)")
+ax[1, 0].text(0, 13.5, "(b)")
+ax[0, 1].text(0, 13.5, "(a)")
 ax[1, 1].text(0, 13.5, "(b)")
 
 # Setting the values for all axes.

@@ -1,7 +1,9 @@
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
-from windspeed_averages_wp import compute_windpower_generation_cmip, drop_nans_DWD, set_date_DWD
+
+from windspeed_averages_wp import (compute_windpower_generation_cmip,
+                                   drop_nans_DWD, set_date_DWD)
 
 matplotlib.rcParams.update({"font.size": 12})
 
@@ -402,5 +404,5 @@ ax[1, 3].axhline(y=1, color="grey", linestyle="--", linewidth=1)
 fig.supxlabel("Time (years)")
 fig.supylabel("Relative electricity generation")
 
-plt.savefig("plots_eps/power_generation_diff_real_cmip6.eps")
+#plt.savefig("plots_eps/power_generation_diff_real_cmip6.eps")
 plt.show()

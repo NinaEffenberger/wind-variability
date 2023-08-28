@@ -299,5 +299,5 @@ fig.legend(*ax[0, 0].get_legend_handles_labels(), loc="outside right center")
 cols = ["average", "instantaneous"]
 for c, ax in zip(cols, ax[0]):
     ax.set_title(c, size="large")
-plt.savefig(savepath)
+#plt.savefig(savepath)
 plt.show()
