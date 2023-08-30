@@ -1,3 +1,6 @@
+"""
+Generate plot that visualizes the difference between the cumulative power generation of 10min wind speeds and other resolutions.
+"""
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np

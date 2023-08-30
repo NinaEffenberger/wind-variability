@@ -1,3 +1,7 @@
+"""
+Generate plot that shows locations of high met masts and wind turbines used.
+"""
+
 import cartopy
 import cartopy.crs as ccrs
 import matplotlib

@@ -1,8 +1,11 @@
+"""
+Generate cumulative wind speed difference plot of 10min data and other resolutions. 
+"""
+
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from matplotlib.legend import _get_legend_handles_labels
 
 matplotlib.rcParams.update({"font.size": 13})
 
@@ -299,5 +302,5 @@ fig.legend(*ax[0, 0].get_legend_handles_labels(), loc="outside right center")
 cols = ["average", "instantaneous"]
 for c, ax in zip(cols, ax[0]):
     ax.set_title(c, size="large")
-#plt.savefig(savepath)
+plt.savefig(savepath)
 plt.show()

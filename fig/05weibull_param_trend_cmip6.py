@@ -1,3 +1,7 @@
+"""
+Generate plot that shows how Weibull parameters of CMIP6 evolve.
+"""
+
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np

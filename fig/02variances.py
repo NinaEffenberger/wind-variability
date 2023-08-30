@@ -1,3 +1,7 @@
+"""
+Generate plot that shows how variance changes when data is averaged.
+"""
+
 import matplotlib
 import matplotlib.pyplot as plt
 

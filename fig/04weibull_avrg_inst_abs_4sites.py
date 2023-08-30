@@ -1,3 +1,7 @@
+"""
+Generate plot that shows evolvement of Weibull parameters when data is averaged.
+"""
+
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np

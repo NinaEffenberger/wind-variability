@@ -1,6 +1,11 @@
+"""
+Generate wind turbine power curve plot. Üower curve used is E-92/2350.
+"""
+
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
+
 from windspeed_averages_wp import compute_windpower
 
 matplotlib.rcParams.update({"font.size": 13})
@@ -27,8 +32,6 @@ plt.axvspan(25, 30, facecolor="#E69F00", alpha=0.2)
 ax.set_xticks([0, 2, 5, 10, 14, 20, 25, 30])
 ax.set_xticklabels(["0", f"2 \n(cut-in)", "5", "10", f"14 \n(rated)", "20", f"25 \n(cut-out)", "30"])
 
-
-print(compute_windpower(speed))
 plt.plot(speed, compute_windpower(speed) / 1e6, color="black", linewidth=1)
 
 plt.savefig("plots_eps/power_curve.svg")
