@@ -1,3 +1,7 @@
+"""
+Generate plot for Gamma parameters of instantaneous data. 
+"""
+
 import matplotlib.pyplot as plt
 import numpy as np
 

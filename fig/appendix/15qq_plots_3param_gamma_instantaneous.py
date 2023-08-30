@@ -1,3 +1,7 @@
+"""
+Generate QQ-plots for instantaneous data and its Gamma parametrizations.
+"""
+
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy import stats

@@ -1,3 +1,7 @@
+"""
+Generate QQ-plots for averaged data and its Weibull parametrizations.
+"""
+
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy import stats

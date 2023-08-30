@@ -1,3 +1,7 @@
+"""
+Generate plot for Weibull parameters of averaged data of the first and last three years of data respectively. 
+"""
+
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.ticker import FormatStrFormatter

@@ -1,3 +1,7 @@
+"""
+Generate KDEs including monthly averages.
+"""
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd

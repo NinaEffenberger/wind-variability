@@ -1,3 +1,7 @@
+"""
+Generate cumulative wind speed difference plot of 10min DWD data and other resolutions. 
+"""
+
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np

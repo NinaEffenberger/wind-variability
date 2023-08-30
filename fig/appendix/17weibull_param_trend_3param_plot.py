@@ -1,3 +1,7 @@
+"""
+Generate plot for Weibull parameters of averaged data. 
+"""
+
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.ticker import FormatStrFormatter

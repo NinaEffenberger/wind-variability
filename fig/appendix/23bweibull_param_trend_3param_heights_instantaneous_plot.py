@@ -1,3 +1,7 @@
+"""
+Generate plot for Weibull parameters of instantaneous data of different heights. 
+"""
+
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.ticker import FormatStrFormatter
@@ -5,8 +9,8 @@ from matplotlib.ticker import FormatStrFormatter
 plt.rcParams["axes.prop_cycle"] = plt.cycler(
     color=["#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7"]
 )
-"""
-savepath = plots_eps/appendix/weibull_param_trend_3param_heights_instantaneous.eps"
+
+savepath = "plots_eps/appendix/weibull_param_trend_3param_heights_instantaneous.eps"
 
 fig, ax = plt.subplots(2, 4, sharex="col", figsize=(8.27, 4), constrained_layout=True)
 cs = np.load("data/weibull_params/3_param_instantaneous/10m/cs_nwtc5.npy")
@@ -106,7 +110,6 @@ fig.supylabel(r"Parameter value")
 fig.delaxes(ax[0, 3])
 plt.savefig(savepath)
 
-"""
 savepath = "plots_eps/appendix/weibull_param_trend_3param_heights_instantaneous_abs.eps"
 
 fig, ax = plt.subplots(2, 3, sharex="col", figsize=(8.27, 4), constrained_layout=True)
