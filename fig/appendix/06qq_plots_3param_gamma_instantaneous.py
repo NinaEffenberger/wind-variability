@@ -232,3 +232,4 @@ fig.supylabel(r"Empirical Quantiles")
 
 fig.savefig("plots_eps/appendix/qq_plot_gamma_instantaneous.pdf")
 fig.savefig("plots_eps/appendix/qq_plot_gamma_instantaneous.png")
+fig.savefig("plots_eps/appendix/qq_plot_gamma_instantaneous.jpg", dpi=1000)

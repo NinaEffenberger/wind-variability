@@ -391,7 +391,7 @@ ax[1, 3].text(0.03, 0.9, "(h)", transform=ax[1, 3].transAxes)
 
 fig.legend(loc="outside right center")
 fig.supxlabel("Time (years)")
-fig.supylabel("Relative electricity generation")
+fig.supylabel(f"Cumulative electricity generation \n relative to 10min data")
 ax[0, 0].axhline(y=1, color="grey", linestyle="--", linewidth=1)
 ax[0, 1].axhline(y=1, color="grey", linestyle="--", linewidth=1)
 ax[0, 2].axhline(y=1, color="grey", linestyle="--", linewidth=1)

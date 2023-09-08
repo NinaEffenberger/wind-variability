@@ -237,3 +237,5 @@ fig.supylabel(r"Empirical Quantiles")
 
 fig.savefig("plots_eps/appendix/qq_plot_weibull_instantaneous.pdf")
 fig.savefig("plots_eps/appendix/qq_plot_weibull_instantaneous.png")
+fig.savefig("plots_eps/appendix/qq_plot_weibull_instantaneous.jpg", dpi=1000)
+

@@ -288,7 +288,7 @@ ax[1, 1].axhline(y=1, color="grey", linestyle="--", linewidth=1)
 ax[1, 2].axhline(y=1, color="grey", linestyle="--", linewidth=1)
 ax[1, 3].axhline(y=1, color="grey", linestyle="--", linewidth=1)
 fig.supxlabel("Time (years)")
-fig.supylabel("Relative electricity generation")
+fig.supylabel(f"Cumulative electricity generation \n relative to 10min data")
 
 plt.savefig("plots_eps/power_generation_diff_real_cmip6_new.eps")
 plt.show()
