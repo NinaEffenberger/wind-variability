@@ -10,7 +10,19 @@ import matplotlib.ticker as mticker
 from cartopy.mpl.gridliner import LATITUDE_FORMATTER, LONGITUDE_FORMATTER
 from matplotlib.lines import Line2D
 
-matplotlib.rcParams.update({"font.size": 13})
+from tueplots import fonts
+
+import matplotlib
+import matplotlib.pyplot as plt
+
+
+matplotlib.rcParams.update({"font.size": 12})
+matplotlib.rcParams.update({"axes.labelsize": 12})
+matplotlib.rcParams.update({"legend.fontsize": 12})
+matplotlib.rcParams.update({"xtick.labelsize": 12})
+matplotlib.rcParams.update({"ytick.labelsize": 12})
+matplotlib.rcParams.update({"axes.titlesize": 12})
+plt.rcParams.update(fonts.neurips2021())
 
 plt.rcParams["axes.prop_cycle"] = plt.cycler(
     color=["#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7"]
@@ -25,7 +37,7 @@ m5_lon = -105.23
 owez_lat = 52.61
 owez_lon = 4.39
 
-fig = plt.figure(figsize=(6, 4.5), layout="constrained")
+fig = plt.figure(layout="constrained", figsize=(5.5, 4))
 
 ax1 = fig.add_subplot(1, 1, 1, projection=ccrs.PlateCarree())
 ax1.coastlines()
@@ -94,7 +106,7 @@ legend_elements = [
 ]
 # ax1.add_feature(cartopy.feature.LAND)
 # ax1.add_feature(cartopy.feature.OCEAN)
-ax1.add_feature(cartopy.feature.COASTLINE, linewidth=0.3)
+ax1.add_feature(cartopy.feature.COASTLINE, linewidth=0.1)
 # ax1.add_feature(cartopy.feature.BORDERS, linestyle=":", linewidth=0.3)
 # ax1.add_feature(cartopy.feature.LAKES, alpha=0.5)
 # ax1.add_feature(cartopy.feature.RIVERS)
@@ -113,6 +125,7 @@ gl.xlines = False
 gl.xlocator = mticker.FixedLocator([-120, -90, 0, -30, -60])
 gl.xformatter = LONGITUDE_FORMATTER
 gl.yformatter = LATITUDE_FORMATTER
-gl.xlabel_style = {"size": 15, "color": "gray"}
+gl.xlabel_style = {"color": "gray"}
 gl.xlabel_style = {"color": "black", "weight": "bold"}
-plt.savefig("plots_eps/locations.svg")
+plt.savefig("wind-variability/plots_eps/locations2.svg")
+plt.show()

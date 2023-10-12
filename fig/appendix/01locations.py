@@ -10,7 +10,20 @@ import matplotlib.ticker as mticker
 from cartopy.mpl.gridliner import LATITUDE_FORMATTER, LONGITUDE_FORMATTER
 from matplotlib.lines import Line2D
 
-matplotlib.rcParams.update({"font.size": 13})
+
+from tueplots import fonts
+
+import matplotlib
+import matplotlib.pyplot as plt
+
+
+matplotlib.rcParams.update({"font.size": 12})
+matplotlib.rcParams.update({"axes.labelsize": 12})
+matplotlib.rcParams.update({"legend.fontsize": 12})
+matplotlib.rcParams.update({"xtick.labelsize": 12})
+matplotlib.rcParams.update({"ytick.labelsize": 12})
+matplotlib.rcParams.update({"axes.titlesize": 12})
+plt.rcParams.update(fonts.neurips2021())
 
 plt.rcParams["axes.prop_cycle"] = plt.cycler(
     color=["#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7"]
@@ -227,5 +240,5 @@ gl.xformatter = LONGITUDE_FORMATTER
 gl.yformatter = LATITUDE_FORMATTER
 gl.xlabel_style = {"size": 15, "color": "gray"}
 gl.xlabel_style = {"color": "black", "weight": "bold"}
-plt.savefig("plots_eps/locations_DWD.svg")
+plt.savefig("wind-variability/plots_eps/locations_DWD.pdf")
 plt.show()

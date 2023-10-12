@@ -4,9 +4,20 @@ Generate plot that shows how variance changes when data is averaged.
 
 import matplotlib
 import matplotlib.pyplot as plt
+from tueplots import fonts
 
-matplotlib.rcParams.update({"font.size": 13})
+import matplotlib
+import matplotlib.pyplot as plt
 
+
+matplotlib.rcParams.update({"font.size": 16}) 
+matplotlib.rcParams.update({"axes.labelsize": 16})
+matplotlib.rcParams.update({"legend.fontsize": 16})
+matplotlib.rcParams.update({"xtick.labelsize": 16})
+matplotlib.rcParams.update({"ytick.labelsize": 16})
+matplotlib.rcParams.update({"axes.titlesize": 16})
+plt.rcParams.update(fonts.neurips2021())
+                    
 fig, ax = plt.subplots(1, 1, constrained_layout=True, figsize=(6, 4.5))
 
 variances_kelmarsh_avrg = [7.698189673676312, 6.972512, 6.577039, 5.052492032572519]
@@ -46,7 +57,8 @@ ax.plot(variances_owez_avrg, label="Owez", color="#F0E442")
 ax.plot(variances_owez_inst, color="#F0E442", linestyle="dashed")
 ax.set_xticks([0, 1, 2, 3])
 ax.set_xticklabels(["10min", "3h", "6h", "day"])
-ax.set_xlabel(r"Resolution", fontsize=16)
-ax.set_ylabel(r"Variance ($\frac{m}{s}$)", fontsize=16)
+ax.set_xlabel(r"Resolution")
+ax.set_ylabel(r"Variance ($\frac{m}{s^2}$)")
 fig.legend(loc="outside right center")
-plt.savefig("plots_eps/variances.eps")
+plt.savefig("wind-variability/plots_eps/variances.eps")
+plt.show()

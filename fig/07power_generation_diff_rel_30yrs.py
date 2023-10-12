@@ -4,20 +4,25 @@ Generate plot that visualizes the difference between the cumulative power genera
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
+from tueplots import fonts
+matplotlib.rcParams.update({"font.size": 14})
+matplotlib.rcParams.update({"axes.labelsize": 14})
+matplotlib.rcParams.update({"legend.fontsize": 14})
+matplotlib.rcParams.update({"xtick.labelsize": 14})
+matplotlib.rcParams.update({"ytick.labelsize": 14})
+matplotlib.rcParams.update({"axes.titlesize": 14})
+plt.rcParams.update(fonts.neurips2021())
 
-matplotlib.rcParams.update({"font.size": 13})
-
-savepath = "plots_eps/power_gen_diff_30yrs.eps"
+savepath = "wind-variability/plots_eps/power_gen_diff_30yrs.eps"
 plt.rcParams["axes.prop_cycle"] = plt.cycler(
     color=["#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7"]
 )
 # load data
-six_hourly_winds = np.load("data/power-gen/Aachen/six_hourly_avrg.npy")
-three_hourly_winds = np.load("data/power-gen/Aachen/three_hourly_avrg.npy")
-daily_winds = np.load("data/power-gen/Aachen/daily_avrg.npy")
-ten_min_winds = np.load("data/power-gen/Aachen/ten_min.npy")
-days = np.load("data/power-gen/Aachen/days.npy", allow_pickle=True)
-
+six_hourly_winds = np.load("wind-variability/data/power-gen/Aachen/daily_avrg.npy")
+three_hourly_winds = np.load("wind-variability/data/power-gen/Aachen/three_hourly_avrg.npy")
+daily_winds = np.load("wind-variability/data/power-gen/Aachen/daily_avrg.npy")
+ten_min_winds = np.load("wind-variability/data/power-gen/Aachen/ten_min.npy")
+days = np.load("wind-variability/data/power-gen/Aachen/days.npy", allow_pickle=True)
 fig, ax = plt.subplots(2, 4, sharex="col", figsize=(6, 4.5), sharey=True, constrained_layout=True)
 print(((np.cumsum(daily_winds)) / np.cumsum(ten_min_winds)[-1])[-1])
 print(((np.cumsum(three_hourly_winds)) / np.cumsum(ten_min_winds)[-1])[-1])
@@ -56,9 +61,9 @@ ax[0, 0].xaxis.set_major_formatter(matplotlib.dates.DateFormatter("%Y"))
 plt.setp(ax[0, 0].get_xticklabels(), rotation=90, ha="center")
 
 
-six_hourly_winds = np.load("data/power-gen/Aachen/six_hourly_inst.npy")
-three_hourly_winds = np.load("data/power-gen/Aachen/three_hourly_inst.npy")
-daily_winds = np.load("data/power-gen/Aachen/daily_inst.npy")
+six_hourly_winds = np.load("wind-variability/data/power-gen/Aachen/six_hourly_inst.npy")
+three_hourly_winds = np.load("wind-variability/data/power-gen/Aachen/three_hourly_inst.npy")
+daily_winds = np.load("wind-variability/data/power-gen/Aachen/daily_inst.npy")
 
 
 print(((np.cumsum(daily_winds)) / np.cumsum(ten_min_winds)[-1])[-1])
@@ -107,11 +112,11 @@ ax[1, 0].xaxis.set_major_formatter(matplotlib.dates.DateFormatter("%Y"))
 plt.setp(ax[1, 0].get_xticklabels(), rotation=90, ha="center")
 
 # load data
-six_hourly_winds = np.load("data/power-gen/Zugspitze/six_hourly_avrg.npy")
-three_hourly_winds = np.load("data/power-gen/Zugspitze/three_hourly_avrg.npy")
-daily_winds = np.load("data/power-gen/Zugspitze/daily_avrg.npy")
-ten_min_winds = np.load("data/power-gen/Zugspitze/ten_min.npy")
-days = np.load("data/power-gen/Zugspitze/days.npy", allow_pickle=True)
+six_hourly_winds = np.load("wind-variability/data/power-gen/Zugspitze/six_hourly_avrg.npy")
+three_hourly_winds = np.load("wind-variability/data/power-gen/Zugspitze/three_hourly_avrg.npy")
+daily_winds = np.load("wind-variability/data/power-gen/Zugspitze/daily_avrg.npy")
+ten_min_winds = np.load("wind-variability/data/power-gen/Zugspitze/ten_min.npy")
+days = np.load("wind-variability/data/power-gen/Zugspitze/days.npy", allow_pickle=True)
 
 print(((np.cumsum(daily_winds)) / np.cumsum(ten_min_winds)[-1])[-1])
 print(((np.cumsum(three_hourly_winds)) / np.cumsum(ten_min_winds)[-1])[-1])
@@ -146,9 +151,9 @@ ax[0, 1].xaxis.set_major_locator(matplotlib.dates.YearLocator(base=10))
 ax[0, 1].xaxis.set_major_formatter(matplotlib.dates.DateFormatter("%Y"))
 plt.setp(ax[0, 1].get_xticklabels(), rotation=90, ha="center")
 
-six_hourly_winds = np.load("data/power-gen/Zugspitze/six_hourly_inst.npy")
-three_hourly_winds = np.load("data/power-gen/Zugspitze/three_hourly_inst.npy")
-daily_winds = np.load("data/power-gen/Zugspitze/daily_inst.npy")
+six_hourly_winds = np.load("wind-variability/data/power-gen/Zugspitze/six_hourly_inst.npy")
+three_hourly_winds = np.load("wind-variability/data/power-gen/Zugspitze/three_hourly_inst.npy")
+daily_winds = np.load("wind-variability/data/power-gen/Zugspitze/daily_inst.npy")
 
 print(((np.cumsum(daily_winds)) / np.cumsum(ten_min_winds)[-1])[-1])
 print(((np.cumsum(three_hourly_winds)) / np.cumsum(ten_min_winds)[-1])[-1])
@@ -200,11 +205,11 @@ ax[1, 1].xaxis.set_major_formatter(matplotlib.dates.DateFormatter("%Y"))
 plt.setp(ax[1, 1].get_xticklabels(), rotation=90, ha="center")
 
 # load data
-six_hourly_winds = np.load("data/power-gen/Boltenhagen/six_hourly_avrg.npy")
-three_hourly_winds = np.load("data/power-gen/Boltenhagen/three_hourly_avrg.npy")
-daily_winds = np.load("data/power-gen/Boltenhagen/daily_avrg.npy")
-ten_min_winds = np.load("data/power-gen/Boltenhagen/ten_min.npy")
-days = np.load("data/power-gen/Boltenhagen/days.npy", allow_pickle=True)
+six_hourly_winds = np.load("wind-variability/data/power-gen/Boltenhagen/six_hourly_avrg.npy")
+three_hourly_winds = np.load("wind-variability/data/power-gen/Boltenhagen/three_hourly_avrg.npy")
+daily_winds = np.load("wind-variability/data/power-gen/Boltenhagen/daily_avrg.npy")
+ten_min_winds = np.load("wind-variability/data/power-gen/Boltenhagen/ten_min.npy")
+days = np.load("wind-variability/data/power-gen/Boltenhagen/days.npy", allow_pickle=True)
 
 print(((np.cumsum(daily_winds)) / np.cumsum(ten_min_winds)[-1])[-1])
 print(((np.cumsum(three_hourly_winds)) / np.cumsum(ten_min_winds)[-1])[-1])
@@ -239,9 +244,9 @@ ax[0, 2].xaxis.set_major_locator(matplotlib.dates.YearLocator(base=10))
 ax[0, 2].xaxis.set_major_formatter(matplotlib.dates.DateFormatter("%Y"))
 plt.setp(ax[0, 2].get_xticklabels(), rotation=90, ha="center")
 
-six_hourly_winds = np.load("data/power-gen/Boltenhagen/six_hourly_inst.npy")
-three_hourly_winds = np.load("data/power-gen/Boltenhagen/three_hourly_inst.npy")
-daily_winds = np.load("data/power-gen/Boltenhagen/daily_inst.npy")
+six_hourly_winds = np.load("wind-variability/data/power-gen/Boltenhagen/six_hourly_inst.npy")
+three_hourly_winds = np.load("wind-variability/data/power-gen/Boltenhagen/three_hourly_inst.npy")
+daily_winds = np.load("wind-variability/data/power-gen/Boltenhagen/daily_inst.npy")
 
 print(((np.cumsum(daily_winds)) / np.cumsum(ten_min_winds)[-1])[-1])
 print(((np.cumsum(three_hourly_winds)) / np.cumsum(ten_min_winds)[-1])[-1])
@@ -294,11 +299,12 @@ ax[1, 2].xaxis.set_major_formatter(matplotlib.dates.DateFormatter("%Y"))
 plt.setp(ax[1, 2].get_xticklabels(), rotation=90, ha="center")
 
 # load data
-six_hourly_winds = np.load("data/power-gen/Fichtelberg/six_hourly_avrg.npy")
-three_hourly_winds = np.load("data/power-gen/Fichtelberg/three_hourly_avrg.npy")
-daily_winds = np.load("data/power-gen/Fichtelberg/daily_avrg.npy")
-ten_min_winds = np.load("data/power-gen/Fichtelberg/ten_min.npy")
-days = np.load("data/power-gen/Fichtelberg/days.npy", allow_pickle=True)
+six_hourly_winds = np.load("wind-variability/data/power-gen/Fichtelberg/six_hourly_avrg.npy")
+three_hourly_winds = np.load("wind-variability/data/power-gen/Fichtelberg/three_hourly_avrg.npy")
+daily_winds = np.load("wind-variability/data/power-gen/Fichtelberg/daily_avrg.npy")
+ten_min_winds = np.load("wind-variability/data/power-gen/Fichtelberg/ten_min.npy")
+days = np.load("wind-variability/data/power-gen/Fichtelberg/days.npy", allow_pickle=True)
+print(days)
 
 print(((np.cumsum(daily_winds)) / np.cumsum(ten_min_winds)[-1])[-1])
 print(((np.cumsum(three_hourly_winds)) / np.cumsum(ten_min_winds)[-1])[-1])
@@ -332,9 +338,9 @@ ax[0, 3].xaxis.set_major_locator(matplotlib.dates.YearLocator(base=10))
 ax[0, 3].xaxis.set_major_formatter(matplotlib.dates.DateFormatter("%Y"))
 plt.setp(ax[0, 2].get_xticklabels(), rotation=90, ha="center")
 
-six_hourly_winds = np.load("data/power-gen/Fichtelberg/six_hourly_inst.npy")
-three_hourly_winds = np.load("data/power-gen/Fichtelberg/three_hourly_inst.npy")
-daily_winds = np.load("data/power-gen/Fichtelberg/daily_inst.npy")
+six_hourly_winds = np.load("wind-variability/data/power-gen/Fichtelberg/six_hourly_inst.npy")
+three_hourly_winds = np.load("wind-variability/data/power-gen/Fichtelberg/three_hourly_inst.npy")
+daily_winds = np.load("wind-variability/data/power-gen/Fichtelberg/daily_inst.npy")
 
 print(((np.cumsum(daily_winds)) / np.cumsum(ten_min_winds)[-1])[-1])
 print(((np.cumsum(three_hourly_winds)) / np.cumsum(ten_min_winds)[-1])[-1])
@@ -380,18 +386,18 @@ plt.setp(ax[1, 3].get_xticklabels(), rotation=90, ha="center")
 custom_ylim = (0, 1.3)
 plt.setp(ax, ylim=custom_ylim)
 
-ax[0, 0].text(0.03, 0.9, "(e)", transform=ax[0, 0].transAxes)
-ax[0, 1].text(0.03, 0.9, "(f)", transform=ax[0, 1].transAxes)
-ax[0, 2].text(0.03, 0.9, "(g)", transform=ax[0, 2].transAxes)
-ax[0, 3].text(0.03, 0.9, "(h)", transform=ax[0, 3].transAxes)
-ax[1, 0].text(0.03, 0.9, "(e)", transform=ax[1, 0].transAxes)
-ax[1, 1].text(0.03, 0.9, "(f)", transform=ax[1, 1].transAxes)
-ax[1, 2].text(0.03, 0.9, "(g)", transform=ax[1, 2].transAxes)
+ax[0, 0].text(0.03, 0.9, "(a)", transform=ax[0, 0].transAxes)
+ax[0, 1].text(0.03, 0.9, "(c)", transform=ax[0, 1].transAxes)
+ax[0, 2].text(0.03, 0.9, "(e)", transform=ax[0, 2].transAxes)
+ax[0, 3].text(0.03, 0.9, "(g)", transform=ax[0, 3].transAxes)
+ax[1, 0].text(0.03, 0.9, "(b)", transform=ax[1, 0].transAxes)
+ax[1, 1].text(0.03, 0.9, "(d)", transform=ax[1, 1].transAxes)
+ax[1, 2].text(0.03, 0.9, "(f)", transform=ax[1, 2].transAxes)
 ax[1, 3].text(0.03, 0.9, "(h)", transform=ax[1, 3].transAxes)
 
 fig.legend(loc="outside right center")
 fig.supxlabel("Time (years)")
-fig.supylabel(f"Cumulative electricity generation \n relative to 10min data")
+fig.supylabel("Cumulative power generation \n relative to 10min data")
 ax[0, 0].axhline(y=1, color="grey", linestyle="--", linewidth=1)
 ax[0, 1].axhline(y=1, color="grey", linestyle="--", linewidth=1)
 ax[0, 2].axhline(y=1, color="grey", linestyle="--", linewidth=1)
