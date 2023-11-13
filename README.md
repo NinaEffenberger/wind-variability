@@ -1,6 +1,6 @@
 # Wind Speed Variability
 
-Code for the Paper "insert name"
+Code for the Paper "Mind the (spectral) gap: How the temporal resolution of wind data affects multi-decadal wind power forecasts" - Nina Effenberger, Rachel H. White, Nicole Ludwig.
 
 All data subsets used are stored in `data`. To re-run the full experiments, download the raw data files as described below, add them to the folder `bigdata` and run the code in `pre-process`.
 
