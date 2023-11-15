@@ -10,15 +10,15 @@ import matplotlib
 import matplotlib.pyplot as plt
 
 
-matplotlib.rcParams.update({"font.size": 16}) 
-matplotlib.rcParams.update({"axes.labelsize": 16})
-matplotlib.rcParams.update({"legend.fontsize": 16})
-matplotlib.rcParams.update({"xtick.labelsize": 16})
-matplotlib.rcParams.update({"ytick.labelsize": 16})
-matplotlib.rcParams.update({"axes.titlesize": 16})
+matplotlib.rcParams.update({"font.size": 10}) 
+matplotlib.rcParams.update({"axes.labelsize": 10})
+matplotlib.rcParams.update({"legend.fontsize": 10})
+matplotlib.rcParams.update({"xtick.labelsize": 10})
+matplotlib.rcParams.update({"ytick.labelsize": 10})
+matplotlib.rcParams.update({"axes.titlesize": 10})
 plt.rcParams.update(fonts.neurips2021())
                     
-fig, ax = plt.subplots(1, 1, constrained_layout=True, figsize=(6, 4.5))
+fig, ax = plt.subplots(1, 1, constrained_layout=True, figsize=(5.5, 3))
 
 variances_kelmarsh_avrg = [7.698189673676312, 6.972512, 6.577039, 5.052492032572519]
 variances_kelmarsh_inst = [
@@ -60,5 +60,5 @@ ax.set_xticklabels(["10min", "3h", "6h", "day"])
 ax.set_xlabel(r"Resolution")
 ax.set_ylabel(r"Variance ($\frac{m}{s^2}$)")
 fig.legend(loc="outside right center")
-plt.savefig("wind-variability/plots_eps/variances.eps")
+plt.savefig("wind-variability/plots_eps/variances2.pdf")
 plt.show()

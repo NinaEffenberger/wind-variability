@@ -9,19 +9,14 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 from cartopy.mpl.gridliner import LATITUDE_FORMATTER, LONGITUDE_FORMATTER
 from matplotlib.lines import Line2D
-
 from tueplots import fonts
 
-import matplotlib
-import matplotlib.pyplot as plt
-
-
-matplotlib.rcParams.update({"font.size": 12})
-matplotlib.rcParams.update({"axes.labelsize": 12})
-matplotlib.rcParams.update({"legend.fontsize": 12})
-matplotlib.rcParams.update({"xtick.labelsize": 12})
-matplotlib.rcParams.update({"ytick.labelsize": 12})
-matplotlib.rcParams.update({"axes.titlesize": 12})
+matplotlib.rcParams.update({"font.size": 10})
+matplotlib.rcParams.update({"axes.labelsize": 10})
+matplotlib.rcParams.update({"legend.fontsize": 10})
+matplotlib.rcParams.update({"xtick.labelsize": 10})
+matplotlib.rcParams.update({"ytick.labelsize":  10})
+matplotlib.rcParams.update({"axes.titlesize": 10})
 plt.rcParams.update(fonts.neurips2021())
 
 plt.rcParams["axes.prop_cycle"] = plt.cycler(
@@ -127,5 +122,5 @@ gl.xformatter = LONGITUDE_FORMATTER
 gl.yformatter = LATITUDE_FORMATTER
 gl.xlabel_style = {"color": "gray"}
 gl.xlabel_style = {"color": "black", "weight": "bold"}
-plt.savefig("wind-variability/plots_eps/locations2.svg")
+plt.savefig("wind-variability/plots_eps/locations.pdf")
 plt.show()

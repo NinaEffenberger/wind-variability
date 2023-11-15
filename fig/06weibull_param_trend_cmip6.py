@@ -8,19 +8,19 @@ import numpy as np
 from matplotlib.ticker import FormatStrFormatter
 from scipy import stats
 from tueplots import fonts
-matplotlib.rcParams.update({"font.size": 14})
-matplotlib.rcParams.update({"axes.labelsize": 14})
-matplotlib.rcParams.update({"legend.fontsize": 14})
-matplotlib.rcParams.update({"xtick.labelsize": 14})
-matplotlib.rcParams.update({"ytick.labelsize": 14})
-matplotlib.rcParams.update({"axes.titlesize": 14})
+matplotlib.rcParams.update({"font.size": 10})
+matplotlib.rcParams.update({"axes.labelsize": 10})
+matplotlib.rcParams.update({"legend.fontsize": 10})
+matplotlib.rcParams.update({"xtick.labelsize": 10})
+matplotlib.rcParams.update({"ytick.labelsize": 10})
+matplotlib.rcParams.update({"axes.titlesize": 10})
 plt.rcParams.update(fonts.neurips2021())
 
 plt.rcParams["axes.prop_cycle"] = plt.cycler(
     color=["#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7"]
 )
 
-fig, ax = plt.subplots(1, 4, sharex=True, sharey=True, figsize=(6, 2.5))
+fig, ax = plt.subplots(1, 4, sharex=True, sharey=True, figsize=(5.5, 2.5), layout="constrained")
 time_series_day = np.load("wind-variability/data/cmip6/data/Aachen/time_series_day.npy")
 time_series_six = np.load("wind-variability/data/cmip6/data/Aachen/time_series_six.npy")
 time_series_three = np.load("wind-variability/data/cmip6/data/Aachen/time_series_three.npy")
@@ -209,12 +209,10 @@ ax[1].yaxis.set_major_formatter(FormatStrFormatter("%.0f"))
 ax[2].yaxis.set_major_formatter(FormatStrFormatter("%.0f"))
 ax[3].yaxis.set_major_formatter(FormatStrFormatter("%.0f"))
 
-ax[0].text(0.03, 0.9, "(a)", transform=ax[0].transAxes)
-ax[1].text(0.03, 0.9, "(b)", transform=ax[1].transAxes)
-ax[2].text(0.03, 0.9, "(c)", transform=ax[2].transAxes)
-ax[3].text(0.03, 0.9, "(d)", transform=ax[3].transAxes)
-fig.tight_layout() 
-ax[0].legend(loc='upper center', bbox_to_anchor=(1.5, 1.5),
-          fancybox=True, shadow=True, ncol=3)
-plt.savefig("wind-variability/plots_eps/weibull_cmip6.pdf")
+ax[0].text(0.03, 0.9, "Aachen", transform=ax[0].transAxes)
+ax[1].text(0.03, 0.9, "Zugspitze", transform=ax[1].transAxes)
+ax[2].text(0.03, 0.9, "Boltenhagen", transform=ax[2].transAxes)
+ax[3].text(0.03, 0.9, "Fichtelberg", transform=ax[3].transAxes)
+fig.legend(loc="outside right center")
+plt.savefig("wind-variability/plots_eps/weibull_cmip6.jpg")
 plt.show()

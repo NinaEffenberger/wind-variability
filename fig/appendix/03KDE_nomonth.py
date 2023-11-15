@@ -13,18 +13,18 @@ import matplotlib
 import matplotlib.pyplot as plt
 
 
-matplotlib.rcParams.update({"font.size": 10})
-matplotlib.rcParams.update({"axes.labelsize": 10})
-matplotlib.rcParams.update({"legend.fontsize": 10})
-matplotlib.rcParams.update({"xtick.labelsize": 10})
-matplotlib.rcParams.update({"ytick.labelsize": 10})
-matplotlib.rcParams.update({"axes.titlesize": 10})
+matplotlib.rcParams.update({"font.size": 14})
+matplotlib.rcParams.update({"axes.labelsize": 14})
+matplotlib.rcParams.update({"legend.fontsize": 14})
+matplotlib.rcParams.update({"xtick.labelsize": 14})
+matplotlib.rcParams.update({"ytick.labelsize": 14})
+matplotlib.rcParams.update({"axes.titlesize": 14})
 plt.rcParams.update(fonts.neurips2021())
 
 plt.rcParams["axes.prop_cycle"] = plt.cycler(
-    color=["#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7"]
+    color=["#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#CC79A7", "#D55E00"]
 )
-fig, ax = plt.subplots(2, 4, sharex=True, figsize=(8.27, 4), constrained_layout=True)
+fig, ax = plt.subplots(2, 4, sharex=True, sharey=True, figsize=(6, 4), constrained_layout=True)
 
 # load data
 average_daily = np.load("wind-variability/data/Pickles/Kelmarsh/average_daily.npy")
@@ -174,12 +174,12 @@ sns.kdeplot(ax=ax[1, 3], data=w, linewidth=1)
 plt.xlim([-2, 27])
 
 ax[0, 0].text(0.03, 0.9, "(a)", transform=ax[0, 0].transAxes)
-ax[0, 1].text(0.03, 0.9, "(c)", transform=ax[0, 1].transAxes)
-ax[0, 2].text(0.03, 0.9, "(e)", transform=ax[0, 2].transAxes)
-ax[0, 3].text(0.03, 0.9, "(g)", transform=ax[0, 3].transAxes)
-ax[1, 0].text(0.03, 0.9, "(b)", transform=ax[1, 0].transAxes)
-ax[1, 1].text(0.03, 0.9, "(d)", transform=ax[1, 1].transAxes)
-ax[1, 2].text(0.03, 0.9, "(f)", transform=ax[1, 2].transAxes)
+ax[0, 1].text(0.03, 0.9, "(b)", transform=ax[0, 1].transAxes)
+ax[0, 2].text(0.03, 0.9, "(c)", transform=ax[0, 2].transAxes)
+ax[0, 3].text(0.03, 0.9, "(d)", transform=ax[0, 3].transAxes)
+ax[1, 0].text(0.03, 0.9, "(e)", transform=ax[1, 0].transAxes)
+ax[1, 1].text(0.03, 0.9, "(f)", transform=ax[1, 1].transAxes)
+ax[1, 2].text(0.03, 0.9, "(g)", transform=ax[1, 2].transAxes)
 ax[1, 3].text(0.03, 0.9, "(h)", transform=ax[1, 3].transAxes)
 
 ax[0, 0].set(xlabel=None, ylabel=None)
@@ -206,3 +206,4 @@ fig.legend(loc="outside right center")
 fig.supxlabel(r"Wind speed ($\frac{m}{s}$)")
 fig.supylabel(r"Density")
 plt.savefig("wind-variability/plots_eps/appendix/KDE_nomonth.pdf")
+plt.show()

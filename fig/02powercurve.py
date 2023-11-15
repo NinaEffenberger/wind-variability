@@ -10,12 +10,12 @@ import matplotlib.pyplot as plt
 from windspeed_averages_wp import compute_windpower
 
 
-matplotlib.rcParams.update({"font.size": 16})
-matplotlib.rcParams.update({"axes.labelsize": 16})
-matplotlib.rcParams.update({"legend.fontsize": 16})
-matplotlib.rcParams.update({"xtick.labelsize": 16})
-matplotlib.rcParams.update({"ytick.labelsize": 16})
-matplotlib.rcParams.update({"axes.titlesize": 16})
+matplotlib.rcParams.update({"font.size": 10})
+matplotlib.rcParams.update({"axes.labelsize": 10})
+matplotlib.rcParams.update({"legend.fontsize": 10})
+matplotlib.rcParams.update({"xtick.labelsize": 10})
+matplotlib.rcParams.update({"ytick.labelsize": 10})
+matplotlib.rcParams.update({"axes.titlesize": 10})
 plt.rcParams.update(fonts.neurips2021())
 
 plt.rcParams["axes.prop_cycle"] = plt.cycler(
@@ -28,7 +28,7 @@ cut_in = 2
 rated = 14
 cut_out = 25
 
-fig, ax = plt.subplots(1, 1, layout="constrained", figsize=(6, 4.5))
+fig, ax = plt.subplots(1, 1, layout="constrained", figsize=(5.5, 3))
 ax.set_xlabel(r"Wind speed ($\frac{m}{s}$)")
 ax.set_ylabel(r"Power output (MW)")
 
@@ -42,5 +42,5 @@ ax.set_xticklabels(["0", f"2 \n(cut-in)", "5", "10", f"14 \n(rated)", "20", f"25
 
 plt.plot(speed, compute_windpower(speed) / 1e6, color="black", linewidth=1)
 
-plt.savefig("wind-variability/plots_eps/power_curve.pdf")
+plt.savefig("wind-variability/plots_eps/power_curve2.pdf")
 plt.show()

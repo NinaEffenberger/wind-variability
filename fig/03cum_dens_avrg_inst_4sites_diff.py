@@ -8,20 +8,20 @@ import numpy as np
 import pandas as pd
 from tueplots import fonts
 
-matplotlib.rcParams.update({"font.size": 14})
-matplotlib.rcParams.update({"axes.labelsize": 14})
-matplotlib.rcParams.update({"legend.fontsize": 14})
-matplotlib.rcParams.update({"xtick.labelsize": 14})
-matplotlib.rcParams.update({"ytick.labelsize": 14})
-matplotlib.rcParams.update({"axes.titlesize": 14})
+matplotlib.rcParams.update({"font.size": 10})
+matplotlib.rcParams.update({"axes.labelsize": 10})
+matplotlib.rcParams.update({"legend.fontsize": 10})
+matplotlib.rcParams.update({"xtick.labelsize": 10})
+matplotlib.rcParams.update({"ytick.labelsize": 10})
+matplotlib.rcParams.update({"axes.titlesize": 10})
 plt.rcParams.update(fonts.neurips2021())
 
 
-savepath = "wind-variability/plots_eps/cum_dens_avrg_inst_4sites_diff.pdf"
+savepath = "wind-variability/plots_eps/cum_dens_avrg_inst_4sites_diff.jpg"
 plt.rcParams["axes.prop_cycle"] = plt.cycler(
     color=["#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7"]
 )
-fig, ax = plt.subplots(4, 2, layout="constrained", figsize=(6, 4.5), sharex=True, sharey=True)
+fig, ax = plt.subplots(4, 2, layout="constrained", figsize=(5.5, 4), sharex=True, sharey=True)
 
 # load data
 average_daily = np.load("wind-variability/data/Pickles/Kelmarsh/average_daily.npy")
@@ -291,14 +291,14 @@ ax[3, 1].plot("windspeeds", "dist8", data=data, linewidth=1)
 
 plt.xlim([0, 25])
 
-ax[0, 0].text(0.03, 0.8, "(a)", transform=ax[0, 0].transAxes)
-ax[1, 0].text(0.03, 0.8, "(b)", transform=ax[1, 0].transAxes)
-ax[2, 0].text(0.03, 0.8, "(c)", transform=ax[2, 0].transAxes)
-ax[3, 0].text(0.03, 0.8, "(d)", transform=ax[3, 0].transAxes)
-ax[0, 1].text(0.03, 0.8, "(e)", transform=ax[0, 1].transAxes)
-ax[1, 1].text(0.03, 0.8, "(f)", transform=ax[1, 1].transAxes)
-ax[2, 1].text(0.03, 0.8, "(g)", transform=ax[2, 1].transAxes)
-ax[3, 1].text(0.03, 0.8, "(h)", transform=ax[3, 1].transAxes)
+ax[0, 0].text(0.03, 0.8, "Kelmarsh", transform=ax[0, 0].transAxes)
+ax[1, 0].text(0.03, 0.8, "Penmanshiel", transform=ax[1, 0].transAxes)
+ax[2, 0].text(0.03, 0.8, "NWTC", transform=ax[2, 0].transAxes)
+ax[3, 0].text(0.03, 0.8, "Owez", transform=ax[3, 0].transAxes)
+ax[0, 1].text(0.03, 0.8, "Kelmarsh", transform=ax[0, 1].transAxes)
+ax[1, 1].text(0.03, 0.8, "Penmanshiel", transform=ax[1, 1].transAxes)
+ax[2, 1].text(0.03, 0.8, "NWTC", transform=ax[2, 1].transAxes)
+ax[3, 1].text(0.03, 0.8, "Owez", transform=ax[3, 1].transAxes)
 
 custom_ylim = (-0.1, 0.3)
 plt.setp(ax, ylim=custom_ylim)
